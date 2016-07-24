@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>可视化排序</title>
+	<style>
+	*{
+		margin:0;
+	}
+	#queue{
+     	display: flex;
+     	width: 100%;
+        justify-content: flex-start;
+        align-items: flex-end;
+
+      
+     } 
+      #queue div{
+      border: 1px solid #000;
+      flex: 1;
+      text-align: center;
+      font-size: 26px;
+      margin-left: 2px;
+      margin-right: 2px;
+
+      }
+      
+      button{
+      	width: 70px;
+      	height: 30px;
+      	border-radius: 10px;
+      	cursor: pointer;      	
+      	color: #fff;
+        background-color: #5cb85c;
+        border-color: #4cae4c;
+        outline: none;
+      }
+  button:hover {
+  color: #fff;
+  background-color: #449d44;
+  border-color: #398439;
+}
+.form-control{
+  width: 100px;
+  height: 20px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+  -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+       -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+          transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+
+.form-control:focus {
+  border-color: #66afe9;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+          box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+}
+	</style>
+</head>
+<body>
+	<fieldset>
+    <legend>队列进出操作，并对数字进行排序，对列中的数量不超过60个</legend>    
+    <label>请在文本框中输入数字<input type="text" id="num" class="form-control"></label>
+    <button id="leftRu">左侧入</button>
+    <button id="rightRu">右侧入</button>
+    <button id="leftChu">左侧出</button>
+    <button id = "rightChu">右侧出</button>  
+    <button id = "bubbleSort">冒泡排序</button>
+    <button id = "randomNum">随机生成数据</button>        
+  </fieldset>
+  <div id= "queue"></div>
+  <script src="task19.js"></script>
+</body>
+</html>

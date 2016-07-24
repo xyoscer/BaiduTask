@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js队列使用</title>
+	<style>
+      #queueItem{
+      	width: 50px;
+      	height: 50px;      	
+      	display: inline-block;
+      	color:#ddd;
+      	border-radius: 10px;
+      	font-size: 20px;
+      	text-align: center;
+      	line-height: 50px;
+      	margin-right: 5px;
+      	
+      	
+      }
+      #queue{
+      	width: 100%;
+      	height: 50px;
+        margin-top: 10px;
+        border-top: 5px solid #ddd;
+        border-bottom: 5px solid #ddd;
+      }
+      button{
+      	width: 70px;
+      	height: 30px;
+      	border-radius: 10px;
+      	cursor: pointer;      	
+      	color: #fff;
+        background-color: #5cb85c;
+        border-color: #4cae4c;
+        outline: none;
+      }
+  button:hover {
+  color: #fff;
+  background-color: #449d44;
+  border-color: #398439;
+}
+.form-control{
+  width: 100px;
+  height: 20px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+  -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+       -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+          transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+
+.form-control:focus {
+  border-color: #66afe9;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+          box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+}
+	</style>
+</head>
+<body>
+	<fieldset>
+    <legend>队列进出操作</legend>    
+    <label>请在文本框中输入数字<input type="text" id="num" class="form-control"></label>
+    <button id="leftRu">左侧入</button>
+    <button id="rightRu">右侧入</button>
+    <button id="leftChu">左侧出</button>
+    <button id = "rightChu">右侧出</button>   
+    
+  </fieldset>
+  <div id= "queue"></div>
+  <script src="task18.js"></script>
+</body>
+</html>
