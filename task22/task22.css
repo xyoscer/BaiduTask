@@ -14,6 +14,7 @@ body{
     height: 86px;
     margin:5px auto;
    border: 2px solid red; 
+   background-color: #fff;
   
 
 
@@ -24,6 +25,7 @@ body{
     display: inline-block;
     margin:5px 5px;
     border: 2px solid green;
+     background-color: #fff;
      
 }
 .child3{
@@ -31,7 +33,8 @@ body{
     height: 60px;
     display: inline-block;
     margin: 5px 5px;
-    border: 2px solid blue;    
+    border: 2px solid blue;   
+     background-color: #fff; 
 }
 #deal{
 	margin-left: 40%;
