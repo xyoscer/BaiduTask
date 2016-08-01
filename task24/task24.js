@@ -8,7 +8,7 @@ function addEventHandle(ele,event,handle){
 		ele["on"+event] = handle;
 	}
 }
-//实现队列的类
+
 
 var treeList = [];
 var head = null;
@@ -20,10 +20,13 @@ var postsearch = document.getElementById('postSearch');
 var deal = document.getElementById('deal');
 var delBtn = document.getElementById('del');
 var addBtn = document.getElementById('add');
+var selected = null;
 
+//监听事件
 addEventHandle(deal,"click",treeDeal);
 addEventHandle(delBtn,"click",delNode);
 addEventHandle(addBtn,"click",addNode);
+
 for(var i=0;i<divs.length;i++){
         addEventHandle(divs[i],"click",highlightShow);
     }   
@@ -41,8 +44,10 @@ function highlightShow(event){
      }else{
         event.cancelBubble = true;
      }
+      selected = this;//保存选中的节点在变量selected中
 
 }
+//对树进行遍历与搜索
 function treeDeal(event){
 	var event = event||window.event;
 	var target = event.target||event.srcElement;
@@ -69,6 +74,7 @@ function treeDeal(event){
 	}
 	
 }
+
 //树的先序遍历
 function preOrder(node){
     if(!(node ==null)){
@@ -152,47 +158,35 @@ function reset(){
             
 
  }
-  function getStyle(element,attr){
-    var value;
-    if(typeof window.getComputedStyle !='undefined'){
-        value = window.getComputedStyle(element,null)[attr];
-    } else if(typeof element.currentStyle != 'undefined'){
-        value = element.currentStyle[attr];
-    }
-    return value;
-
-}    
+  //点击树中的节点对其进行删除 
  function delNode(){
-    for(var i=0;i<divs.length;i++){
-        
-       if(getStyle(divs[i],"backgroundColor")=="rgb(0, 0, 255)"){
-         
-            var parent = divs[i].parentNode;
-             var childNum = divs[i].childElementCount;           
-            while(childNum){
-                divs[i].removeChild(divs[i].firstElementChild);                 
-                childNum--;
-            }
-          
-            parent.removeChild(divs[i]);
-            return ;
-         }
-    }
+    if(selected === null){
+        alert("请先选择要删除的节点");
+    }else{
     
-    }
+          var parent = selected.parentNode;
+          var childNum = selected.childElementCount;           
+            while(childNum){
+                selected.removeChild(selected.firstElementChild);                 
+                childNum--;
+            }          
+            parent.removeChild(selected);
+        }    
+   }
+
+//搜索框中获得要插入的节点内容，根据树中选中的节点，在其后进行插入操作
  function addNode(){
     var addValue = document.getElementsByTagName('input')[1].value.trim();
+
     if(addValue ==""){
-        alert("请输入插入节点内容");
+        alert("请先输入插入节点内容");
+    }else if(selected === null){
+            alert("请先选中要操作的节点");
     }else{
-         for(var i=0;i<divs.length;i++){
-        
-       if(getStyle(divs[i],"backgroundColor")=="rgb(0, 0, 255)"){         
-           
-          divs[i].innerHTML += "<div class='child3'>"+addValue+"</div>";
-            return ;
-         }
-    }
-    }
-    
- }
+
+        selected.innerHTML +="<div class='child3'>"+addValue+"</div>";
+       
+    } 
+}
+     
+ 
