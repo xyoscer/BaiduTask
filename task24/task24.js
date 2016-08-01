@@ -127,18 +127,22 @@ function reset(){
   	head = treeList.shift(); //出队
             if (head) {
                 text = head.firstChild.nodeValue.trim();
-                if (text === input) {
+                  if(input ==""){
+                    alert("请输入搜索内容");
+                  }else{
+                    if (text === input) {
                     head.style.backgroundColor = "pink"; 
                     flag = true;
                         return;
                 } else {                 
-			       head.className +=" animate";
+                   head.className +=" animate";
                     timer1 = setTimeout(function () {
-                    	head.className = head.className.replace(/animate/,"normal");                      
+                        head.className = head.className.replace(/animate/,"normal");                      
                         showValue(); //递归调用，使要显示的节点不停出队显示，直至为空
                     }, 800);
                 }
-            }else{
+            }
+        } else{
             	if(flag==false){
             		alert("该元素不存在");
             		document.getElementsByTagName('input')[0].value = "";
@@ -178,8 +182,10 @@ function reset(){
     }
  function addNode(){
     var addValue = document.getElementsByTagName('input')[1].value.trim();
-    console.log(addValue);
-     for(var i=0;i<divs.length;i++){
+    if(addValue ==""){
+        alert("请输入插入节点内容");
+    }else{
+         for(var i=0;i<divs.length;i++){
         
        if(getStyle(divs[i],"backgroundColor")=="rgb(0, 0, 255)"){         
            
@@ -187,4 +193,6 @@ function reset(){
             return ;
          }
     }
+    }
+    
  }

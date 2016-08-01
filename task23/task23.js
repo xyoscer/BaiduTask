@@ -116,7 +116,10 @@ function showValue() {
     head = treeList.shift(); //出队
     if (head) {
         text = head.firstChild.nodeValue.trim();
-        if (text === input) {
+        if(input ==""){
+            alert("请输入搜索的值")
+        }else{
+            if (text === input) {
             head.style.backgroundColor = "pink";
             flag = true;
             return;
@@ -126,7 +129,9 @@ function showValue() {
                 head.className = head.className.replace(/animate/, "normal");
                 showValue(); //递归调用，使要显示的节点不停出队显示，直至为空
             }, 800);
+        } 
         }
+       
     } else {
         if (flag == false) {
             alert("该元素不存在");
