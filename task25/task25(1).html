@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>树的操作</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	
+	<div id="root">&nbsp;root<a class="display" href="javascript:;">+</a>
+		<div class="child1">&nbsp;a1<a class="display" href="javascript:;">+</a>
+			<div class="child2">&nbsp;b1<a class="display" href="javascript:;">+</a>
+
+				<div class="child3">&nbsp;c1<a class="display" href="javascript:;">-</a></div>
+				<div class="child3">&nbsp;c2<a class="display" href="javascript:;">-</a></div>
+				<div class="child3">&nbsp;c3<a class="display" href="javascript:;">-</a></div>
+			</div>
+			<div class="child2">&nbsp;b2<a class="display" href="javascript:;">+</a>
+				<div class="child3">&nbsp;c4<a class="display" href="javascript:;">-</a></div>
+				<div class="child3">&nbsp;c5<a class="display" href="javascript:;">-</a></div>
+			</div>
+			<div class="child2">&nbsp;b3<a class="display" href="javascript:;">+</a>
+
+				<div class="child3">&nbsp;c6<a class="display" href="javascript:;">-</a></div>
+				<div class="child3">&nbsp;c7<a class="display" href="javascript:;">-</a></div>
+			</div>
+			<div class="child2">&nbsp;b4<a class="display" href="javascript:;">+</a>
+				<div class="child3">&nbsp;c8<a class="display" href="javascript:;">-</a></div>
+				<div class="child3">&nbsp;c9<a class="display" href="javascript:;">-</a></div>
+			</div>
+		</div>
+	<div class="child1">&nbsp;a2<a class="display" href="javascript:;">+</a>
+			<div class="child2">&nbsp;b5<a class="display" href="javascript:;">-</a>
+				<div class="child3">&nbsp;c10<a class="display" href="javascript:;">-</a></div>
+				
+			</div>
+			<div class="child2">&nbsp;b6<a class="display" href="javascript:;">-</a>
+				<div class="child3">&nbsp;c11<a class="display" href="javascript:;">-</a></div>
+				<div class="child3">&nbsp;c12<a class="display" href="javascript:;">-</a></div>
+			</div>
+			<div class="child2">&nbsp;b7<a class="display" href="javascript:;">-</a>
+		
+				<div class="child3">&nbsp;c13<a class="display" href="javascript:;">-</a></div>
+				<div class="child3">&nbsp;c14<a class="display" href="javascript:;">-</a></div>
+				<div class="child3">&nbsp;c15<a class="display" href="javascript:;">-</a></div>
+				<div class="child3">&nbsp;c16<a class="display" href="javascript:;">-</a></div>
+			</div>
+			
+		</div>
+		<div class="child1">&nbsp;a3<a class="display" href="javascript:;">+</a>
+		    <div class="child2">&nbsp;b8<a class="display" href="javascript:;">-</a>
+				<div class="child3">&nbsp;c17<a class="display" href="javascript:;">-</a></div>
+				
+			</div>
+			<div class="child2">&nbsp;b9<a class="display" href="javascript:;">-</a>
+				
+				
+			</div>
+		</div>
+		
+	</div>
+<section id="deal">
+		<button class="btn" id="pre">树的先序遍历</button>
+		
+		<button class="btn" id="post">树的后序遍历</button>
+		 <input type="text" placeholder="请输入搜索的内容" class="form-control"><button class="btn" id="preSearch">先序遍历搜索</button>
+	 <button class="btn" id="postSearch">后序遍历搜索</button>
+	</section>
+<section id="del_add">
+<button class="btn" id="del">删除树中的节点及其子节点</button>
+<input type="text" placeholder="请输入插入节点的内容" class="form-control"><button class="btn" id="add">插入节点</button>
+
+</section>
+	<script src="task25(1).js"></script> 
+</body>
+</html>
