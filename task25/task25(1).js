@@ -29,33 +29,58 @@ addEventHandle(deal,"click",treeDeal);
 addEventHandle(delBtn,"click",delNode);
 addEventHandle(addBtn,"click",addNode);
 
-for(var i=0;i<divs.length;i++){
-        addEventHandle(divs[i],"click",highlightShow);
+for(var i=0;i<oA.length;i++){
+        addEventHandle(oA[i],"click",highlightShow);
     }   
 //点击某个节点元素，则该节点元素呈现一个特殊被选中的样式
 function highlightShow(event){
+ 
      var event = event||window.event;
      this.style.backgroundColor = "pink";
-     if(this.firstElementChild.innerHTML =="-"){     
-         this.firstElementChild.innerHTML = "+";
-           var childNum = this.childElementCount;  
+     if(this.innerHTML =="-"){ 
+         if(this.nextElementSibling == null){
+             var flag = prompt("该节点已经是子节点了，您是否需要插入子节点?");  
+             if(flag === "是"){            
+                  addNode();
+                  this.style.backgroundColor = "#fff";
+                 selected = this.parentNode;
+                  return ;
+                 /* this.innerHTML = "+";*/
+             }
+          }else{  
+              var nextNode = this.nextElementSibling;
+              while(nextNode){
+                    nextNode.style.display = "none";
+                    
+                    nextNode = nextNode.nextElementSibling;  
+                
+              }  
+              this.innerHTML = "+";        
+              /*var childNum = this.childElementCount;  
+               for(var i=1;i<childNum;i++){
+                 this.children[i].style.display = "none";  
+                 this.innerHTML = "+";
+            }    */
+          } 
+         }else {       
+           this.innerHTML = "-";
+            var nextNode = this.nextElementSibling;
+            while(nextNode){
+                   nextNode.style.display = "flex";
+                    /*this.innerHTML = "+";*/
+                    nextNode = nextNode.nextElementSibling;  
+                /*   this = this.nextElementSibling;  */
+                
+              }       
+          /* var childNum = this.childElementCount;  
            for(var i=1;i<childNum;i++){
-              this.children[i].style.display = "none";  
-            }              
-           
-     }else {
-       
-        this.firstElementChild.innerHTML = "-";
-       var childNum = this.childElementCount;  
-           for(var i=1;i<childNum;i++){
-              this.children[i].style.display = "flex";  
-            }              
-           
-      
-     }
-     for(var i=0;i<divs.length;i++){
-      if(divs[i]!= this){
-         divs[i].style.backgroundColor = "#fff";
+              this.children[i].style.display = "flex"; 
+
+            }      */ 
+        }
+    for(var i=0;i<oA.length;i++){
+      if(oA[i]!= this){
+         oA[i].style.backgroundColor = "#fff";
       }
     }
      if(event.stopPropagation){
@@ -63,7 +88,7 @@ function highlightShow(event){
      }else{
         event.cancelBubble = true;
      }
-      selected = this;//保存选中的节点在变量selected中
+      selected = this.parentNode;//保存选中的节点在变量selected中
 
 }
 //对树进行遍历与搜索
@@ -197,18 +222,27 @@ function reset(){
  function addNode(){
     var addValue = document.getElementsByTagName('input')[1].value.trim();
 
-    if(addValue ==""){
+    if(addValue == ""){
         alert("请先输入插入节点内容");
     }else if(selected === null){
             alert("请先选中要操作的节点");
     }else{
-        var childStyle = selected.lastElementChild.classList;
+        /*var childStyle = selected.lastElementChild.classList;*/
        
-        selected.innerHTML +="<div class='+childStyle+'>"+addValue+"<a class='display' href='javascript:;'>-</a>"+"</div>";
+        selected.innerHTML +="<div class='child4'>"+addValue+"<a class='display' href='javascript:;'>-</a>"+"</div>";
+        document.getElementsByTagName('input')[1].value = "";
        
     } 
-}
-    
+      //更新点击事件
+           Alink = document.getElementsByTagName('a');
+           for(var i=0;i<Alink.length;i++){
+             addEventHandle(Alink[i],"click",highlightShow);
+       } 
+           
+
+
+  }  
+
  function getStyle(element,attr){
   var value;
   if(typeof window.getComputedStyle !='undefined'){
