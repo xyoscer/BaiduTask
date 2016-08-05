@@ -1,3 +1,13 @@
+//跨浏览器事件绑定
+function addEventHandler(ele,event,handle) {
+    if(ele.addEventListener){
+        ele.addEventListener(event,handle,false);
+    }else if(ele.attachEvent){
+        ele.attachEvent("on"+event,handle);
+    }else{
+        ele["on"+event] = handle;
+    }
+}
 //添加节点
 function onAddItem(point,initName,id){
     var name;
@@ -9,7 +19,9 @@ function onAddItem(point,initName,id){
             return
         }
     }
-    point.parentElement.parentElement.firstElementChild.innerHTML='&#xe60c';
+    point.parentElement.parentElement.firstElementChild.innerHTML='+';
+    var child =  point.parentElement.parentElement.firstElementChild;
+   /* addEventHandler(child,"click",onIsShow(child,1));*/
     point.parentElement.parentElement.firstElementChild.setAttribute('onclick','onIsShow(this,1)');
     var node=point.parentNode.parentNode.nextElementSibling;
     node.style.display='block';
@@ -17,7 +29,7 @@ function onAddItem(point,initName,id){
     var ul=document.createElement("ul");
     var li=document.createElement("li");
     var div=document.createElement("div");
-    var div1=document.createElement("span");
+    var span=document.createElement("span");
     var div2=document.createElement("div");
     var add=document.createElement("i");
     var del=document.createElement("i");
@@ -27,26 +39,30 @@ function onAddItem(point,initName,id){
     div.setAttribute('class','title');
     div2.setAttribute('class','btnGroup');
     show.setAttribute('class','iconfont');
-    add.innerHTML='&#xe600添加';
+    add.innerHTML='添加';
     if(id){
         add.setAttribute('id',id);
     }
+    /*addEventHandler(add,"click",onAddItem(add));*/
     add.setAttribute('onclick','onAddItem(this)');
-    add.setAttribute('class','iconfont');
-    del.innerHTML='&#xe608删除';
+   
+    del.innerHTML='删除';
+  /*  addEventHandler(del,"click",onDelItem(del));*/
     del.setAttribute('onclick','onDelItem(this)');
-    del.setAttribute('class','iconfont');
-    ren.innerHTML='&#xe604重命名';
+  
+    ren.innerHTML='重命名';
+    /* addEventHandler(ren,"click",onRenItem(ren));*/
     ren.setAttribute('onclick','onRename(this)');
-    ren.setAttribute('class','iconfont');
+   
     //添加分支
     div2.appendChild(add);
     div2.appendChild(del);
     div2.appendChild(ren);
-    div1.innerHTML=name||initName||'未命名';
-    div1.setAttribute('onclick','onIsShow(this,1)');
+    span.innerHTML=name||initName||'未命名';
+    /*addEventHandler(span,"click",onIsShow(span,1));*/
+    span.setAttribute('onclick','onIsShow(this,1)');
     div.appendChild(show);
-    div.appendChild(div1);
+    div.appendChild(span);
     div.appendChild(div2);
     li.appendChild(div);
     li.appendChild(ul);
@@ -78,19 +94,19 @@ function onIsShow(point,type){
         if(node.style.display=='none'){
             node.style.display='block';
             if(node.childElementCount){
-                point.parentElement.firstElementChild.innerHTML='&#xe60c';
+                point.parentElement.firstElementChild.innerHTML='-';
             }
         }else{
             node.style.display='none';
             if(node.childElementCount){
-                point.parentElement.firstElementChild.innerHTML='&#xe60b';
+                point.parentElement.firstElementChild.innerHTML='+';
             }
         }
     }else{
         if(node.childElementCount){
-            point.parentElement.firstElementChild.innerHTML='&#xe60c';
+            point.parentElement.firstElementChild.innerHTML='+';
         }else{
-            point.parentElement.firstElementChild.innerHTML='';
+            point.parentElement.firstElementChild.innerHTML='-';
         }
     }
 }
@@ -138,31 +154,15 @@ function onSearch(){
 
 //文本初始化
 (function (){
-    var SEO=document.getElementById('menu').lastElementChild.firstElementChild;
-  
-    onAddItem(SEO,'SEO','SEO');
-   /* var guangYiSEO=document.getElementById('SEO');
-    onAddItem(guangYiSEO,'广义上的SEO','guangYiSEO');
-    var xiaYiSEO=document.getElementById('SEO');
-    onAddItem(xiaYiSEO,'狭义上的SEO','xiaYiSEO');
-    var wangWaiSEO=document.getElementById('guangYiSEO');
-    onAddItem(wangWaiSEO,'网站外部SEO','wangWaiSEO');
-    var wangNeiSEO=document.getElementById('guangYiSEO');
-    onAddItem(wangNeiSEO,'网站内部SEO','wangNeiSEO');
-    var pingPai=document.getElementById('xiaYiSEO');
-    onAddItem(pingPai,'平台','pingPai');
-    var kan=document.getElementById('pingPai');
-    onAddItem(kan,'看','kan');
-    var B2B=document.getElementById('kan');
-    onAddItem(B2B,'B2B','B2B');
-    var souSuo=document.getElementById('kan');
-    onAddItem(souSuo,'搜索平台','souSuo');
-    var lunTan=document.getElementById('kan');
-    onAddItem(lunTan,'相关论坛','lunTan');
-    var menHu=document.getElementById('kan');
-    onAddItem(menHu,'地方门户','menHu');
-    var ganZhi=document.getElementById('pingPai');
-    onAddItem(ganZhi,'感知','ganZhi');
-    var wangYuanChuang=document.getElementById('xiaYiSEO');
-    onAddItem(wangYuanChuang,'网络原创内容','wangYuanChuang');*/
+    var Web=document.getElementById('menu').lastElementChild.firstElementChild;
+    var root = document.getElementById('Web');
+    onAddItem(Web,'web前端','Web');
+  var js=document.getElementById('Web');
+    onAddItem(js,'javascript学习','js');
+    var html=document.getElementById('Web');
+    onAddItem(html,'HTML学习','html');
+    var css =document.getElementById('Web');
+     onAddItem(css,'CSS学习','css');
+   
 }());
+

@@ -1,6 +1,9 @@
+* {
+    margin:0;
+    padding:0;
+}
 body {
-    background:#eee;
-    font:normal normal 14px/1.4 Microsoft YaHei ;
+    background:#eee;   
     padding:50px;
 }
 
@@ -12,19 +15,17 @@ body {
     border-radius: 10px;
 }
 #nav{
-    padding: 1em 2em;
-   background: #00E6FF; 
-    height: 2em;
+    padding: 20px 10px;
+    background: #00E6FF; 
+    height: 50px;
+    line-height: 50px;
 }
 #list{
-    padding: 2em;
+    padding: 20px;
 }
 
-#menu{
-    color:#123;
-}
 #menu .btnGroup{
-    padding-left: 1em;
+    padding-left: 10px;
     display: inline-block;
 }
 .form-control{
@@ -61,10 +62,8 @@ body {
 }
 .tree,
 .tree ul {
-    margin:0 0 0 1em;
-    padding:0;
-    list-style:none;
-    color:#123;
+    margin:0 0 0 25px;  
+    list-style:none;    
     position:relative;
 }
 
@@ -77,30 +76,28 @@ body {
     top:0;
     bottom:0;
     left:0;
-    border-left:1px solid;
+    border-left:1px dotted #123;
 }
 
 .tree li {
     margin:0;
-    padding:0 .5em;
-    line-height:2em;
+    padding:10px;  
     position:relative;
 }
 
 .tree li:before {
-    content:"";
-    display:block;
-    width:10px;
-    height:0;
-    border-top:1px solid;
-    margin-top:-1px;
-    position:absolute;
-    top:1em;
-    left:0;
+    content: "";
+    display: block;
+    width: 15px;
+    height: 0;
+    border-top: 1px dotted #123; 
+    position: absolute;
+    top: 20px;
+    left: 0;
 }
 
 .tree li .title>i{
-    margin-left: .5em;
+    margin-left: 5px;
 }
 
 .tree li:last-child:before {
@@ -110,11 +107,12 @@ body {
     bottom:0;
 }
 .tree li .btnGroup{
-    padding-left: 1em;
+    padding-left: 10px;    
     display: none;
 }
 .btnGroup>i{
-    margin-right:0.5em;
+    margin-right:5px;
+    font-size: 16px;
 }
 /* hover  */
 .tree li>.title:hover,
@@ -124,7 +122,7 @@ body {
 }
 .tree li>.title:hover>.btnGroup{
     display: inline-block;
-}
+} 
 .btnGroup>i:last-child:hover{
     color: #4663d8;
 }
@@ -133,4 +131,13 @@ body {
 }
 .btnGroup>i:first-child:hover{
     color: #06aE9B;
+}
+.iconfont{
+    border: 1px solid #ddd;
+    font-size: 20px;  
+    width: 15px;
+    height: 15px;
+    line-height: 15px;
+    color:#ccc;
+    display: inline-block;
 }

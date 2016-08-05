@@ -46,6 +46,7 @@ function highlightShow(event){
      }
       selected = this;//保存选中的节点在变量selected中
 
+
 }
 //对树进行遍历与搜索
 function treeDeal(event){
@@ -187,6 +188,12 @@ function reset(){
         selected.innerHTML +="<div class='child3'>"+addValue+"</div>";
        
     } 
+     //更新点击事件
+           Alink = document.getElementsByTagName('a');
+           for(var i=0;i<Alink.length;i++){
+             addEventHandle(Alink[i],"click",highlightShow);
+       } 
+           
 }
      
  

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="tree.css"/>
+    
+    <title></title>
+</head>
+<body>
+    <div id="board">
+        <div id="nav">
+            <input type="text" id="search" placeholder="请输入搜索文件名称" class="form-control"/>
+            <button onclick="onSearch()" class="btn">搜索</button>
+        </div>
+        <div id="list">
+            <div id="menu">
+                <i class="iconfont"></i>
+                <span id="root" onclick="onIsShow(this,1)">
+                    目录
+                </span>
+                <div class="btnGroup">
+                    <i onclick="onAddItem(this)">添加</i>
+                </div>
+            </div>
+            <ul class="tree">
+            </ul>
+        </div>
+    </div>
+   <script src="task25.js"></script> 
+</body>
+</html>
