@@ -22,6 +22,8 @@ var deal = document.getElementById('deal');
 var delBtn = document.getElementById('del');
 var addBtn = document.getElementById('add');
 var oA = document.getElementsByTagName("a");
+
+
 var selected = null;
 
 //监听事件
@@ -38,46 +40,39 @@ function highlightShow(event){
      var event = event||window.event;
      this.style.backgroundColor = "pink";
      if(this.innerHTML =="-"){ 
-         if(this.nextElementSibling == null){
+         if(this.nextElementSibling.nextElementSibling == null){
              var flag = prompt("该节点已经是子节点了，您是否需要插入子节点?");  
              if(flag === "是"){            
                   addNode();
                   this.style.backgroundColor = "#fff";
                  selected = this.parentNode;
                   return ;
-                 /* this.innerHTML = "+";*/
+                
              }
           }else{  
-              var nextNode = this.nextElementSibling;
+              var nextNode = this.nextElementSibling.nextElementSibling;
               while(nextNode){
                     nextNode.style.display = "none";
                     
-                    nextNode = nextNode.nextElementSibling;  
+                    nextNode = nextNode.nextElementSibling.nextElementSibling;  
                 
               }  
               this.innerHTML = "+";        
-              /*var childNum = this.childElementCount;  
-               for(var i=1;i<childNum;i++){
-                 this.children[i].style.display = "none";  
-                 this.innerHTML = "+";
-            }    */
+             
           } 
          }else {       
            this.innerHTML = "-";
             var nextNode = this.nextElementSibling;
             while(nextNode){
-                   nextNode.style.display = "flex";
-                    /*this.innerHTML = "+";*/
+                   nextNode.style.display = "flex";                 
                     nextNode = nextNode.nextElementSibling;  
-                /*   this = this.nextElementSibling;  */
+               
                 
               }       
-          /* var childNum = this.childElementCount;  
-           for(var i=1;i<childNum;i++){
-              this.children[i].style.display = "flex"; 
-
-            }      */ 
+          
         }
+
+       
     for(var i=0;i<oA.length;i++){
       if(oA[i]!= this){
          oA[i].style.backgroundColor = "#fff";
@@ -229,7 +224,7 @@ function reset(){
     }else{
         /*var childStyle = selected.lastElementChild.classList;*/
        
-        selected.innerHTML +="<div class='child4'>"+addValue+"<a class='display' href='javascript:;'>-</a>"+"</div>";
+        selected.innerHTML +="<div class='child4'>"+addValue+"<a class='display' href='javascript:;'>-</a>"+"<p class='item'><i class='Add'>添加</i><i class='Del'>删除</i></p>"+"</div>";
         document.getElementsByTagName('input')[1].value = "";
        
     } 

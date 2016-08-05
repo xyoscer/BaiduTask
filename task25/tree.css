@@ -62,7 +62,7 @@ body {
 }
 .tree,
 .tree ul {
-    margin:0 0 0 25px;  
+    margin:0 0 0 15px;  
     list-style:none;    
     position:relative;
 }
@@ -140,4 +140,5 @@ body {
     line-height: 15px;
     color:#ccc;
     display: inline-block;
+    margin-right: 5px;
 }
