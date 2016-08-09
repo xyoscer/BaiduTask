@@ -124,19 +124,20 @@ function onSearch(){
     var count=0;
     var getChild=function(element,name){
         var e,l,more;
-        for(l=element.childNodes.length;l;){
-            e=element.childNodes[--l];
-            if(e.firstElementChild){
+
+        for(l=element.childElementCount;l;){
+            e=element.children[--l];
+            if(e.firstElementChild){                                                                                                                                               
                 if(e.firstElementChild.firstElementChild.nextElementSibling.innerText==name){
                     e.firstElementChild.firstElementChild.nextElementSibling.style.display='inline-block';
-                    e.firstElementChild.firstElementChild.nextElementSibling.style.color='#'+color;
+                    e.firstElementChild.firstElementChild.nextElementSibling.style.color="red";
                     e.parentNode.style.display='block';
-                    e.parentElement.previousElementSibling.firstElementChild.innerHTML='&#xe60c';
+                    e.parentElement.previousElementSibling.firstElementChild.innerHTML='-';
                     //匹配展开
                     function listShow(e){
                         if(e.parentNode.parentNode.tagName=='UL'){
                             e.parentNode.parentNode.style.display='block';
-                            e.parentElement.parentElement.previousElementSibling.firstElementChild.innerHTML='&#xe60c';
+                            e.parentElement.parentElement.previousElementSibling.firstElementChild.innerHTML='+';
                             listShow(e.parentNode.parentNode)
                         }else{
                             return e;
@@ -145,7 +146,7 @@ function onSearch(){
                     listShow(e.parentNode);
                     count++;
                 }
-                if(e.lastElementChild.childNodes.length){
+                if(e.lastElementChild.childElementCount){
                     more = getChild(e.lastElementChild,name);
                     if (more) return more
                 }
@@ -153,19 +154,17 @@ function onSearch(){
         }
 
     };
-    var color=Math.floor(2+8*Math.random())*100+Math.floor(2+8*Math.random())*10+Math.floor(2+8*Math.random());
+  
     getChild(tree,search);
-    alert('共找到'+count+'个同名文件');
+    alert('红色文件名为找到'+count+'个同名文件');
 }
 
 //文本初始化
 (function (){
-    var Web=document.getElementById('menu').lastElementChild.firstElementChild;
-  
- 
+    var Web=document.getElementById('menu').lastElementChild.firstElementChild; 
     onAddItem(Web,'web前端','Web'); 
-      var root = document.getElementById('Web'); 
-   onAddItem(root,'javascript学习','js');  
+    var root = document.getElementById('Web'); 
+    onAddItem(root,'javascript学习','js');  
     onAddItem(root,'HTML学习','html');   
     onAddItem(root,'CSS学习','css');
    
