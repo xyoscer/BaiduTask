@@ -10,6 +10,7 @@ function addEventHandler(ele,event,handle) {
 }
 //添加节点
 function onAddItem(point,initName,id){
+
     var name;
     if(initName){
         name = initName;
@@ -21,7 +22,7 @@ function onAddItem(point,initName,id){
     }
     point.parentElement.parentElement.firstElementChild.innerHTML='+';
     var child =  point.parentElement.parentElement.firstElementChild;
-   /* addEventHandler(child,"click",onIsShow(child,1));*/
+  
     point.parentElement.parentElement.firstElementChild.setAttribute('onclick','onIsShow(this,1)');
     var node=point.parentNode.parentNode.nextElementSibling;
     node.style.display='block';
@@ -43,7 +44,7 @@ function onAddItem(point,initName,id){
     if(id){
         add.setAttribute('id',id);
     }
-    /*addEventHandler(add,"click",onAddItem(add));*/
+  /* addEventHandler(add,"click",onAddItem);*/
     add.setAttribute('onclick','onAddItem(this)');
    
     del.innerHTML='删除';
@@ -59,14 +60,16 @@ function onAddItem(point,initName,id){
     div2.appendChild(del);
     div2.appendChild(ren);
     span.innerHTML=name||initName||'未命名';
-    /*addEventHandler(span,"click",onIsShow(span,1));*/
-    span.setAttribute('onclick','onIsShow(this,1)');
+    /*addEventHandler(span,"click",onIsShow);*/
+   span.setAttribute('onclick','onIsShow(this,1)');
     div.appendChild(show);
     div.appendChild(span);
     div.appendChild(div2);
     li.appendChild(div);
     li.appendChild(ul);
     node.appendChild(li);
+
+   
 }
 
 //删除节点
@@ -89,7 +92,10 @@ function onRename(point){
 
 //是否展开
 function onIsShow(point,type){
+    var event = event||window.event;
+    var target = event.target||event.srcElement;
     var node=point.parentNode.nextElementSibling;
+    type = 1;
     if(type){
         if(node.style.display=='none'){
             node.style.display='block';
@@ -155,14 +161,13 @@ function onSearch(){
 //文本初始化
 (function (){
     var Web=document.getElementById('menu').lastElementChild.firstElementChild;
-    var root = document.getElementById('Web');
-    onAddItem(Web,'web前端','Web');
-  var js=document.getElementById('Web');
-    onAddItem(js,'javascript学习','js');
-    var html=document.getElementById('Web');
-    onAddItem(html,'HTML学习','html');
-    var css =document.getElementById('Web');
-     onAddItem(css,'CSS学习','css');
+  
+ 
+    onAddItem(Web,'web前端','Web'); 
+      var root = document.getElementById('Web'); 
+   onAddItem(root,'javascript学习','js');  
+    onAddItem(root,'HTML学习','html');   
+    onAddItem(root,'CSS学习','css');
    
 }());
 
