@@ -1,70 +1,61 @@
-body{
-	margin:0;
-	background-color: transparent;
+body {
+    margin:0;
+    background-color: transparent;
 }
-#root{
-	width: 300px;
-	height: 200px;
-	border: 5px solid #eee;	
-	margin:20px auto;
-	
+#root {
+    width: 300px;
+    height: 200px;
+    border: 5px solid #eee;
+    margin:20px auto;
 }
-.child1{
+.child1 {
     width: 280px;
     height: 86px;
     margin:5px auto;
-   border: 2px solid red; 
-   background-color: #fff;
-  
-
-
+    border: 2px solid red;
+    background-color: #fff;
 }
-.child2{
+.child2 {
     width: 120px;
     height: 75px;
     display: inline-block;
     margin:5px 5px;
     border: 2px solid green;
-     background-color: #fff;
-     
+    background-color: #fff;
 }
-.child3{
-   width: 42px;
+.child3 {
+    width: 42px;
     height: 60px;
     display: inline-block;
     margin: 5px 5px;
-    border: 2px solid blue;   
-     background-color: #fff; 
+    border: 2px solid blue;
+    background-color: #fff;
 }
-#deal{
-	margin-left: 40%;
+#deal {
+    margin-left: 40%;
 }
-.btn{
-      
-      	padding: 10px 10px;
-      	border-radius: 10px;
-      	cursor: pointer;      	
-      	color: #fff;
-        background-color: #5cb85c;
-        border-color: #4cae4c;
-        outline: none;
-
+.btn {
+    padding: 10px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    color: #fff;
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+    outline: none;
 }
 button:hover {
-  color: #fff;
-  background-color: #449d44;
-  border-color: #398439;
+    color: #fff;
+    background-color: #449d44;
+    border-color: #398439;
 }
-.animate{
-   background-color: yellow;
-  /*  transform: rotate(360deg);  */
-  border-radius: 50px;
-    transition: all  2s ease-in-out; 
-
+.animate {
+    background-color: yellow;
+    /*  transform: rotate(360deg);  */
+    border-radius: 50px;
+    transition: all 2s ease-in-out;
 }
-.normal{
-	
-	border-radius: 0;
-	/* background-color: #eee; */
-    transition: all  1s ease-in-out; 
+.normal {
+    border-radius: 0;
+    /* background-color: #eee; */
+    transition: all 1s ease-in-out;
 }
