@@ -27,3 +27,20 @@ function preOrder(node){
   - 对象.className = " 类名"，空格类名，在原有类的基础上在给它添加样式类
   -treeList[i-1].className = treeList[i-1].className.replace(/animate/,"normal");使用replace()函数，用后面的类样式取代前面的类样式。
   4. 学习forEach()函数，对数组中的每一项进行运行给定的函数，这个函数没有返回值。
+     - array.forEach(callback[, thisArg]);
+   callback 函数会被依次传入三个参数：
+        数组当前项的值
+        数组当前项的索引
+        数组对象本身
+        如果给forEach传递了thisArg 参数，它将作为 callback 函数的执行上下文
+使用样例：
+```javascript
+function logArrayElements(element, index, array) {
+    console.log("a[" + index + "] = " + element);
+}
+[2, 5, 9].forEach(logArrayElements);
+// logs:
+// a[0] = 2
+// a[1] = 5
+// a[2] = 9
+```
