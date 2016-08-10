@@ -22,8 +22,8 @@ function preOrder(node){
  preOrder(node.lastElementChild);
  }
 }
+```
  3. 将遍历结果以动画的形式在一定的时间间隔下进行显示：使用计时器函数setInterVal(),给遍历过的节点数组循环进行样式显示。使用
   - 对象.className = " 类名"，空格类名，在原有类的基础上在给它添加样式类
   -treeList[i-1].className = treeList[i-1].className.replace(/animate/,"normal");使用replace()函数，用后面的类样式取代前面的类样式。
   4. 学习forEach()函数，对数组中的每一项进行运行给定的函数，这个函数没有返回值。
-```
