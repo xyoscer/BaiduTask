@@ -8,7 +8,7 @@ body{
 	background-color: #eee;  
 
 }
-#root{
+.root{
 	 display: flex; 	
    padding: 10px;
 	 align-items:center;
@@ -16,9 +16,10 @@ body{
 	 position: relative;
 	 justify-content: space-around;
 	 flex-direction: row; 
-    width: 100%;
-    justify-content: space-around;
-    align-items:center;
+   width: 100%;
+   justify-content: space-around;
+   align-items:center;
+   background-color: #fff; 
 
 }
 
@@ -35,7 +36,7 @@ body{
      justify-content: space-around;
      align-items:center;
      border: 2px solid red; 
-     background-color: #fff;
+    background-color: #fff; 
 }
 .child2{
 	
@@ -46,7 +47,7 @@ body{
      align-items:center;
      justify-content: space-around; 
      border: 2px solid green;
-      background-color: #fff;
+       background-color: #fff; 
 }
 .child3{
 	
@@ -55,7 +56,7 @@ body{
       padding: 5px;
       border: 2px solid blue; 
       flex:0 1 auto; 
-       background-color: #fff;
+    background-color: #fff; 
 }
 section{
 	 margin-left: 10%; 
@@ -99,7 +100,7 @@ button:hover {
   border-color: #398439;
 }
 .animate{
-    background-color: yellow;
+   
     border-radius: 50px;
     transition: all  2s ease-in-out; 
 
@@ -107,5 +108,13 @@ button:hover {
 .normal{
 	
 	border-radius: 0;	
-    transition: all  1s ease-in-out; 
+  transition: all  1s ease-in-out; 
+}
+.search{
+    background-color: pink;
+    border-radius: 50px;
+    transition: all  2s ease-in-out; 
+}
+.specail{
+   background-color: blue;
 }

@@ -13,7 +13,7 @@ function addEventHandle(ele,event,handle){
 var treeList = [];
 var head = null;
 var timer1 = null;
-var root = document.getElementById('root');
+var root = document.getElementsByClassName('root')[0];
 var divs = document.getElementsByTagName('div');
 var presearch = document.getElementById('preSearch');
 var postsearch = document.getElementById('postSearch');
@@ -30,13 +30,16 @@ addEventHandle(addBtn,"click",addNode);
 for(var i=0;i<divs.length;i++){
         addEventHandle(divs[i],"click",highlightShow);
     }   
+
 //点击某个节点元素，则该节点元素呈现一个特殊被选中的样式
 function highlightShow(event){
      var event = event||window.event;
-     this.style.backgroundColor = "blue";
+     this.style.backgroundColor = "#00ffff";  
+    
      for(var i=0;i<divs.length;i++){
       if(divs[i]!= this){
-         divs[i].style.backgroundColor = "#fff";
+       divs[i].style.backgroundColor = "#fff";
+       
       }
     }
      if(event.stopPropagation){
@@ -54,7 +57,6 @@ function treeDeal(event){
 	var target = event.target||event.srcElement;
 	
 	reset();
-
 	switch(target.id){
 		case "pre":preOrder(root);
 		break;		
@@ -104,10 +106,13 @@ function postOrder(node){
 
 //显示的样式
 function changeStyle(){	
+
 	 	head = treeList.shift(); //出队
             if (head) {
-                head.className +=" animate";          
-                timer1 = setTimeout(function () {
+                head.style.backgroundColor = "yellow";
+                head.className +=" animate";                 
+                timer1 = setTimeout(function () {                  
+                   head.style.backgroundColor = "#fff";
                     head.className = head.className.replace(/animate/,"normal");                      
                      changeStyle(); //递归调用，使要显示的节点不停出队显示，直至为空
                     }, 800);
@@ -119,8 +124,9 @@ function changeStyle(){
 //每次进行遍历前都将所有样式去掉，并且使treeList[]清空
 function reset(){
 	clearInterval(timer1);
-	for(var i=0;i<divs.length;i++){
-		divs[i].className = divs[i].className.replace(/normal|animate/,"");
+	for(var i=0;i<divs.length;i++){		
+    divs[i].style.backgroundColor = "#fff";
+    divs[i].className = divs[i].className.replace(/normal|animate/,"");
 	}	
 	
 	treeList = [];//清空队列
@@ -138,16 +144,19 @@ function reset(){
                     alert("请输入搜索内容");
                   }else{
                     if (text === input) {
-                    head.style.backgroundColor = "pink"; 
+                    head.style.backgroundColor = "pink";  
                     flag = true;
-                        return;
-                } else {                 
-                   head.className +=" animate";
+                       return;
+                   } else {    
+                    head.style.backgroundColor = "yellow";          
+                    head.className +=" animate";
                     timer1 = setTimeout(function () {
+                        head.style.backgroundColor = "#fff";
                         head.className = head.className.replace(/animate/,"normal");                      
                         showValue(); //递归调用，使要显示的节点不停出队显示，直至为空
                     }, 800);
                 }
+
             }
         } else{
             	if(flag==false){
@@ -156,8 +165,7 @@ function reset(){
             		document.getElementsByTagName('input')[0].focus();
             	}
             }
-            
-
+     
  }
   //点击树中的节点对其进行删除 
  function delNode(){
@@ -167,10 +175,10 @@ function reset(){
     
           var parent = selected.parentNode;
           var childNum = selected.childElementCount;           
-            while(childNum){
+           /* while(childNum){
                 selected.removeChild(selected.firstElementChild);                 
                 childNum--;
-            }          
+            }       */   
             parent.removeChild(selected);
         }    
    }
@@ -186,13 +194,14 @@ function reset(){
     }else{
 
         selected.innerHTML +="<div class='child3'>"+addValue+"</div>";
+          document.getElementsByTagName('input')[1].value = "";
        
     } 
      //更新点击事件
-           Alink = document.getElementsByTagName('a');
-           for(var i=0;i<Alink.length;i++){
-             addEventHandle(Alink[i],"click",highlightShow);
-       } 
+
+       for(var i=0;i<divs.length;i++){
+        addEventHandle(divs[i],"click",highlightShow);
+    }   
            
 }
      
