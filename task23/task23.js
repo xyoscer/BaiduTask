@@ -9,7 +9,7 @@ function addEventHandle(ele, event, handle) {
         ele["on" + event] = handle;
     }
 }
-//实现队列的类
+
  
 var treeList = [];
 var head = null;

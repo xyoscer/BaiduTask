@@ -44,24 +44,23 @@ function onAddItem(point,initName,id){
     if(id){
         add.setAttribute('id',id);
     }
-  /* addEventHandler(add,"click",onAddItem);*/
+ 
     add.setAttribute('onclick','onAddItem(this)');
    
     del.innerHTML='删除';
-  /*  addEventHandler(del,"click",onDelItem(del));*/
+ 
     del.setAttribute('onclick','onDelItem(this)');
   
     ren.innerHTML='重命名';
-    /* addEventHandler(ren,"click",onRenItem(ren));*/
+   
     ren.setAttribute('onclick','onRename(this)');
    
     //添加分支
     div2.appendChild(add);
     div2.appendChild(del);
     div2.appendChild(ren);
-    span.innerHTML=name||initName||'未命名';
-    /*addEventHandler(span,"click",onIsShow);*/
-   span.setAttribute('onclick','onIsShow(this,1)');
+    span.innerHTML=name||initName||'未命名';  
+    span.setAttribute('onclick','onIsShow(this,1)');
     div.appendChild(show);
     div.appendChild(span);
     div.appendChild(div2);

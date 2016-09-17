@@ -109,6 +109,7 @@ function changeStyle(){
 
 	 	head = treeList.shift(); //出队
             if (head) {
+               
                 head.style.backgroundColor = "yellow";
                 head.className +=" animate";                 
                 timer1 = setTimeout(function () {                  
