@@ -9,7 +9,7 @@
   }
   .grid-container{
         width: 100%; 
-       /*  max-width: 1200px;   */    
+       
     }
   .row{
     margin:2px;
@@ -23,7 +23,6 @@
     }
    img{
    max-width: 100%;
-   max-height: 100%; 
    height: auto;
  } 
     [class*='col-'] {
@@ -55,9 +54,8 @@
 
     /*-- some extra column content styling --*/
     [class*='col-'] > figure {
-     /* background-color: #f5f5f5;  */
-     padding: 2px 2px 10px 2px ;   
-      
+    
+     padding: 2px 2px 10px 2px ;  
      text-align: center; 
      vertical-align: center;
      color: black; 
