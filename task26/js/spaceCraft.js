@@ -29,7 +29,7 @@ function SpaceShip(orbit) {
             stop: function() {
                 obj.__status = STOP;
             },
-            //由宇宙管理员操作的飞行功能
+      //由宇宙管理员操作的飞行功能
             _fly: function() {
                 if(obj.__status == START) {
                     obj._angle += obj.__rate;
@@ -37,7 +37,7 @@ function SpaceShip(orbit) {
                 obj._angle = obj._angle % 360;
             }
         },
-        //能源系统
+     //能源系统
         energy: {
             /**
              * 添加能源
@@ -63,7 +63,7 @@ function SpaceShip(orbit) {
                 return obj.__energy;
             }
         },
-        //信号系统
+  //信号系统
         telegraph: {
             /**
              * 向飞船发送信号

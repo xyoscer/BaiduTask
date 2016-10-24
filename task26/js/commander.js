@@ -11,21 +11,21 @@ var commander = {
     createSpaceShip: function(orbitId) {
         //记录中该轨道已经有飞船了
         if(this.notebook.orbitStatus[orbitId]) {
-            log("轨道" + (orbitId + 1) + "上已经存在飞船！", "blue");
+            log("[指挥官]:"+"轨道" + (orbitId + 1) + "上已经存在飞船！", "blue");
             return;
         }
         this.notebook.orbitStatus[orbitId] = true;
-        log("在轨道" + (orbitId + 1) + "上创建飞船！", "yellow");
+        log("[指挥官]:"+"在轨道" + (orbitId + 1) + "上创建飞船指令已发出！", "yellow");
         spaceManager.Mediator.createSpaceShip(orbitId);
     },
     //开始飞行
     start: function(orbitId) {
         //记录中该轨道没有飞船
         if(!this.notebook.orbitStatus[orbitId]) {
-            log("轨道" + (orbitId + 1) + "上不存在飞船！", "blue");
+            log("[指挥官]:"+"轨道" + (orbitId + 1) + "上不存在飞船！", "blue");
             return;
         }
-        log("向轨道" + (orbitId + 1) + "发送开始飞行指令！", "yellow");
+        log("[指挥官]:"+"向轨道" + (orbitId + 1) + "发送开始飞行指令！", "yellow");
         //发送广播消息
         spaceManager.Mediator.sendMessage({
             id: orbitId,
@@ -36,10 +36,10 @@ var commander = {
     stop: function(orbitId) {
         //记录中该轨道没有飞船
         if(!this.notebook.orbitStatus[orbitId]) {
-            log("轨道" + (orbitId + 1) + "上不存在飞船！", "blue");
+            log("[指挥官]:"+"轨道" + (orbitId + 1) + "上不存在飞船！", "blue");
             return;
         }
-        log("向轨道" + (orbitId + 1) + "发送停止飞行指令！", "yellow");
+        log("[指挥官]:"+"向轨道" + (orbitId + 1) + "发送停止飞行指令！", "yellow");
         //发送广播消息
         spaceManager.Mediator.sendMessage({
             id: orbitId,
@@ -50,12 +50,12 @@ var commander = {
     destroy: function(orbitId) {
         //记录中该轨道没有飞船
         if(!this.notebook.orbitStatus[orbitId]) {
-            log("轨道" + (orbitId + 1) + "上不存在飞船！", "blue");
+            log("[指挥官]:"+"轨道" + (orbitId + 1) + "上不存在飞船！", "blue");
             return;
         }
         //从记录中删除飞船
         this.notebook.orbitStatus[orbitId] = false;
-        log("向轨道" + (orbitId + 1) + "发送销毁指令！", "yellow");
+        log("[指挥官]:"+"向轨道" + (orbitId + 1) + "发送销毁指令！", "yellow");
         //发送广播消息
         spaceManager.Mediator.sendMessage({
             id: orbitId,
@@ -66,10 +66,10 @@ var commander = {
     setRate: function(orbitId, rate) {
         //记录中该轨道没有飞船
         if(!this.notebook.orbitStatus[orbitId]) {
-            log("轨道" + (orbitId + 1) + "上不存在飞船！", "blue");
+            log("[指挥官]:"+"轨道" + (orbitId + 1) + "上不存在飞船！", "blue");
             return;
         }
-        log("向轨道" + (orbitId + 1) + "发送速度设置指令！", "yellow");
+        log("[指挥官]:"+"向轨道" + (orbitId + 1) + "发送速度设置指令！", "yellow");
         spaceManager.Mediator.sendMessage({
             id: orbitId,
             command: 'rate',

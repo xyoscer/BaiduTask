@@ -44,10 +44,10 @@ var spaceManager = {
             setTimeout(function() {
                 //一定概率（30%）丢包
                 if(Math.random() <= 0.3) {
-                    log("向轨道" + (message.id + 1) + "发送的 " + message.command + " 指令丢包了！", "red");
+                    log("[广播消息]:"+"向轨道" + (message.id + 1) + "发送的 " + message.command + " 指令丢包了！", "red");
                     return;
                 }
-                log("向轨道" + (message.id + 1) + "发送 " + message.command + " 指令成功！", "green");
+                log("[广播消息]:"+"向轨道" + (message.id + 1) + "发送 " + message.command + " 指令成功！", "green");
                 for(var i = 0; i < spaceManager.notebook.spaceShipList.length; i++) {
                     //已销毁的飞船不处理
                     if(spaceManager.notebook.spaceShipList[i]._destroyed) {
@@ -67,10 +67,10 @@ var spaceManager = {
             setTimeout(function() {
                 //一定概率（30%）丢包
                 if(Math.random() <= 0.3) {
-                    log("向轨道" + (orbitId + 1) + "发送的 create 指令丢包了！", "red");
+                    log("[广播消息]:"+"向轨道" + (orbitId + 1) + "发送的 create 指令丢包了！", "red");
                     return;
                 }
-                log("向轨道" + (orbitId + 1) + "发送 create 指令成功！", "green");
+                log("[广播消息]:"+"向轨道" + (orbitId + 1) + "发送 create 指令成功！", "green");
                 spaceManager.createSpaceShip(orbitId);
             }, 1000);
         }
