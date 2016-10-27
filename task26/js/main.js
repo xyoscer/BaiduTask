@@ -8,8 +8,8 @@ function getTime() {
     var day = date.getDay();   
     var hour = date.getHours();   
     var minute = date.getMinutes();  
-   var second = date.getSeconds(); 
-   var millisecond = date.getMilliseconds();
+    var second = date.getSeconds(); 
+    var millisecond = date.getMilliseconds();
     return year + "-" + month + "-" + day + " " + hour + ":" + minute + ":" + second + "." + millisecond;
 }
 /**
@@ -39,39 +39,33 @@ function log(message, colour) {
         var orbit = parseInt(this.parentNode.dataset.id);
         var message = this.dataset.type;
         switch(message) {
-            case 'create':
-                if(this.dataset.status == 'create') {
-                    commander.createSpaceShip(orbit);
-                    this.dataset.status = 'created';
-                    this.innerHTML = '自爆销毁';
+            case 'create':             
+                    commander.createSpaceShip(orbit);                   
                     this.nextElementSibling.disabled = false;
                     this.nextElementSibling.nextElementSibling.disabled = false;
                     this.nextElementSibling.nextElementSibling.nextElementSibling.disabled = false;
-                } else {
-                    commander.destroy(orbit);
-                    this.dataset.status = 'create';
-                    this.innerHTML = '创建飞船';
-                    this.nextElementSibling.disabled = true;
-                    this.nextElementSibling.dataset.status = 'start';
-                    this.nextElementSibling.innerHTML = '飞行';
-                    this.nextElementSibling.nextElementSibling.disabled = true;
-                    this.nextElementSibling.nextElementSibling.value = 1;
-                    this.nextElementSibling.nextElementSibling.nextElementSibling.disabled = true;
-                }
-                break;
+                    this.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.disabled = false;
+                    this.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.disabled = false;          
+                   
+              
+                break;                
             case 'drive':
-                if(this.dataset.status == 'start') {
-                    commander.start(orbit);
-                    this.dataset.status = 'stop';
-                    this.innerHTML = '停止';
-                } else {
-                    commander.stop(orbit);
-                    this.dataset.status = 'start';
-                    this.innerHTML = '飞行';
-                }
+                    commander.start(orbit);               
                 break;
+            case 'stop':
+                    commander.stop(orbit);
+                break;
+            case 'destory':
+                    commander.destroy(orbit);   
+                    this.disabled = true;               
+                    this.previousElementSibling.disabled = true;                   
+                    this.previousElementSibling.previousElementSibling.disabled = true;
+                    this.previousElementSibling.previousElementSibling.previousElementSibling.disabled = false;
+                    this.nextElementSibling.value = 1;                    
+                    this.nextElementSibling.nextElementSibling.disabled = true;
+                    
             case 'rate':
-                var value = this.previousElementSibling.value - 0;
+                var value = parseInt(this.previousElementSibling.value);
                 commander.setRate(orbit, value);
                 break;
         }
