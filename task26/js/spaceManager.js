@@ -18,13 +18,13 @@ var spaceManager = {
     createSpaceShip: function(orbitId) {
         //创建飞船对象并保存到数组
         var planet = document.getElementById('planet');
-        var shipId = this.notebook.spaceShipList.push(new SpaceShip(orbitId));
+        var shipId = this.notebook.spaceShipList.push(SpaceShip(orbitId));
         //创建飞船主体div
         var spaceshipDiv = document.createElement("div");
         spaceshipDiv.id = "spaceship" + shipId;
         spaceshipDiv.className = "space-ship orbit-ship" + orbitId;
        // 创建能量条div
-       var energyDiv = document.createElement("div");
+        var energyDiv = document.createElement("div");
         energyDiv.className = "energy";
         spaceshipDiv.appendChild(energyDiv);
         //创建能量文本div      
@@ -77,49 +77,3 @@ var spaceManager = {
     }
 };
 
-//飞船飞行及显示管理
-(function() {
-       var planet = document.getElementById('planet');
-    spaceManager.notebook.spaceShipFlyManager = setInterval(function() {
-        for(var i = 0; i < spaceManager.notebook.spaceShipList.length; i++) {
-            //已销毁的飞船不处理
-            if(spaceManager.notebook.spaceShipList[i]._destroyed) {
-                //在界面显示中删除飞船
-                if(!spaceManager.notebook.spaceShipList[i].clear) {
-                    spaceManager.notebook.spaceShipList[i].clear = true;
-                    planet.removeChild(document.getElementById("spaceship" + (i + 1)));
-                }
-                continue;
-            }
-            //飞船飞行控制
-            spaceManager.notebook.spaceShipList[i].drive._fly();
-            //飞船Div
-            var ship = document.getElementById("spaceship" + (i + 1));
-            //修改飞船位置
-            ship.style.webkitTransform = "rotate(" + spaceManager.notebook.spaceShipList[i]._angle + "deg)";
-            ship.style.mozTransform = "rotate(" + spaceManager.notebook.spaceShipList[i]._angle + "deg)";
-            ship.style.msTransform = "rotate(" + spaceManager.notebook.spaceShipList[i]._angle + "deg)";
-            ship.style.oTransform = "rotate(" + spaceManager.notebook.spaceShipList[i]._angle + "deg)";
-            ship.style.transform = "rotate(" + spaceManager.notebook.spaceShipList[i]._angle + "deg)";
-            //能源显示
-            ship.firstElementChild.style.width = spaceManager.notebook.spaceShipList[i].energy.get() + "%";
-            ship.lastElementChild.innerHTML = spaceManager.notebook.spaceShipList[i].energy.get() + "%";
-        }
-    }, 100);
-})();
-
-//太阳能管理
-(function() {
-    spaceManager.notebook.solarManager = setInterval(function() {
-        for(var i = 0; i < spaceManager.notebook.spaceShipList.length; i++) {
-            //已销毁的飞船不处理
-            if(spaceManager.notebook.spaceShipList[i]._destroyed) {
-                continue;
-            }
-            //太阳能充能系统
-            spaceManager.notebook.spaceShipList[i].energy.add(2);
-            //飞行耗能
-            spaceManager.notebook.spaceShipList[i].energy.consume(5);
-        }
-    }, 1000);
-})();
