@@ -2,13 +2,13 @@
  * 获取时间
  */
 function getTime() {
-    var date = new Date(); 
-    var year = date.getFullYear();  
-    var month = date.getMonth()+1;   
-    var day = date.getDay();   
-    var hour = date.getHours();   
-    var minute = date.getMinutes();  
-    var second = date.getSeconds(); 
+    var date = new Date();
+    var year = date.getFullYear();
+    var month = date.getMonth() + 1;
+    var day = date.getDay();
+    var hour = date.getHours();
+    var minute = date.getMinutes();
+    var second = date.getSeconds();
     var millisecond = date.getMilliseconds();
     return year + "-" + month + "-" + day + " " + hour + ":" + minute + ":" + second + "." + millisecond;
 }
@@ -18,7 +18,8 @@ function getTime() {
  * @param colour 颜色
  */
 var consoleText = document.getElementById("console-text");
-function log(message, colour) {   
+ 
+function log(message, colour) {
     var p = document.createElement("p");
     p.innerHTML = getTime() + " ";
     var span = document.createElement("span");
@@ -27,52 +28,53 @@ function log(message, colour) {
     p.appendChild(span);
     consoleText.appendChild(p);
     console.log("%c" + message, "background-color:" + colour);
-   
+ 
 }
-
+ 
 /**
  * 操作面板
- */
-(function() {
+ */ (function () {
     //按钮事件
-    var buttonClick = function() {      
-        var orbit = parseInt(this.parentNode.dataset.id);
-        var message = this.dataset.type;
-        switch(message) {
-            case 'create':             
-                    commander.createSpaceShip(orbit);                   
-                    this.nextElementSibling.disabled = false;
-                    this.nextElementSibling.nextElementSibling.disabled = false;
-                    this.nextElementSibling.nextElementSibling.nextElementSibling.disabled = false;
-                    this.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.disabled = false;
-                    this.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.disabled = false;          
-                   
-              
-                break;                
-            case 'drive':
-                    commander.start(orbit);               
-                break;
-            case 'stop':
-                    commander.stop(orbit);
-                break;
-            case 'destory':
-                    commander.destroy(orbit);   
-                    this.disabled = true;               
-                    this.previousElementSibling.disabled = true;                   
-                    this.previousElementSibling.previousElementSibling.disabled = true;
-                    this.previousElementSibling.previousElementSibling.previousElementSibling.disabled = false;
-                    this.nextElementSibling.value = 1;                    
-                    this.nextElementSibling.nextElementSibling.disabled = true;
-                    
-            case 'rate':
-                var value = parseInt(this.previousElementSibling.value);
-                commander.setRate(orbit, value);
-                break;
+    var buttonClick = function (event) {
+        var event = event || window.event;
+        var target = event.target || event.srcElement;
+        var orbit = parseInt(target.parentNode.dataset.id);
+        var message = target.dataset.type;
+        switch (message) {
+        case 'create':
+            commander.createSpaceShip(orbit);
+            target.nextElementSibling.disabled = false;
+            target.nextElementSibling.nextElementSibling.disabled = false;
+            target.nextElementSibling.nextElementSibling.nextElementSibling.disabled = false;
+            target.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.disabled = false;
+            target.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.disabled =
+                false;
+            break;
+        case 'drive':
+            commander.start(orbit);
+            break;
+        case 'stop':
+            commander.stop(orbit);
+            break;
+        case 'destory':
+            commander.destroy(orbit);
+            target.disabled = true;
+            target.previousElementSibling.disabled = true;
+            target.previousElementSibling.previousElementSibling.disabled = true;
+            target.previousElementSibling.previousElementSibling.previousElementSibling.disabled = false;
+            target.nextElementSibling.value = 1;
+            target.nextElementSibling.nextElementSibling.disabled = true;
+            break;
+        case 'rate':
+            var value = parseInt(target.previousElementSibling.value);
+            commander.setRate(orbit, value);
+            break;
         }
     };
-    //绑定按钮事件
-    var buttons = document.getElementsByTagName("button");
-    for(var i = 0; i < buttons.length; i++) {
-        buttons[i].addEventListener("click", buttonClick);
-    }
+ 
+    //绑定控制面板的按钮事件
+    var controlMain = document.getElementById("control-main");
+    controlMain.addEventListener("click", buttonClick, false);
+ 
+ 
 })();

@@ -18,18 +18,18 @@ var spaceManager = {
     createSpaceShip: function(orbitId) {
         //创建飞船对象并保存到数组
         var planet = document.getElementById('planet');
-        var shipId = this.notebook.spaceShipList.push(SpaceShip(orbitId));
+        this.notebook.spaceShipList.push(SpaceShip(orbitId));
         //创建飞船主体div
         var spaceshipDiv = document.createElement("div");
-        spaceshipDiv.id = "spaceship" + shipId;
+        spaceshipDiv.id = "spaceship" + orbitId;
         spaceshipDiv.className = "space-ship orbit-ship" + orbitId;
        // 创建能量条div
         var energyDiv = document.createElement("div");
         energyDiv.className = "energy";
         spaceshipDiv.appendChild(energyDiv);
-        //创建能量文本div      
+        //创建能量文本节点     
         var textDiv = document.createTextNode("100%");    
-        spaceshipDiv.appendChild(textDiv);
+        energyDiv.appendChild(textDiv);
         //将飞船显示到页面上
        planet.appendChild(spaceshipDiv);
     },

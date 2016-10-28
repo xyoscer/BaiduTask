@@ -1,208 +1,35 @@
 * {
-   
     padding: 0;
     margin: 0;
     box-sizing:border-box;
 }
 
-html, body {
-   
+html, body {   
     width: 100%;
     height: 100%;   
     background-color: #02071d;
 }
-#left{
+
+#left {
     width: 35%;
     display: inline-block;
     vertical-align: top;
     border:2px solid #fff;
 
 }
-#planet{
+#planet {
     display: inline-block;
     position: relative;
     width: 60%;
-     margin-left: 20px; 
-   
+    margin-left: 20px;   
     height: 600px; 
   
 }
-/** 指挥官所在的蓝色星球 */
-#commander {
-    position: absolute;
-    background-color: #005aff;
-    left: 50%;
-    top: 50%;
-    width: 100px;
-    height: 100px;
-    -webkit-border-radius: 50px;
-    -moz-border-radius: 50px;
-    border-radius: 50px;
-}
-
-/** 第一轨道 */
-#orbit0 {
- 
-  position: absolute;
-  left:44%;
-  top:42%;
-    width: 200px;
-    height: 200px;
-    -webkit-border-radius: 100px;
-    -moz-border-radius: 100px;
-    border-radius: 100px;
-}
-
-/** 第二轨道 */
-#orbit1 {
-   
-   position: absolute;
-  left:38%;
-  top:33%;
-    width: 300px;
-    height: 300px;
-    -webkit-border-radius: 150px;
-    -moz-border-radius: 150px;
-    border-radius: 150px;
-}
-
-/** 第三轨道 */
-#orbit2 {
-      position: absolute;
-  left:32%;
-  top:26%;
-   
-    width: 400px;
-    height: 400px;
-    -webkit-border-radius: 200px;
-    -moz-border-radius: 200px;
-    border-radius: 200px;
-}
-
-/** 第四轨道 */
-#orbit3 {
-      position: absolute;
-      left:26%;
-     top:18%;  
-  
-    width: 500px;
-    height: 500px;
-    -webkit-border-radius: 250px;
-    -moz-border-radius: 250px;
-    border-radius: 250px;
-}
-
-/** 轨道通用样式 */
- .orbit {
-   
-    border: 2px #555 solid;
-} 
-
-/** 第一轨道的飞船 */
-.orbit-ship0 { 
-   
-    top: 41%;
-    /** 旋转中心 */
-    -webkit-transform-origin: center 110px;
-    -moz-transform-origin: center 110px;
-    -ms-transform-origin: center 110px;
-    -o-transform-origin: center 110px;
-    transform-origin: center 110px;
-}
-
-/** 第二轨道的飞船 */
-.orbit-ship1 {
-   
-    top: 32%;
-    /** 旋转中心 */
-    -webkit-transform-origin: center 160px;
-    -moz-transform-origin: center 160px;
-    -ms-transform-origin: center 160px;
-    -o-transform-origin: center 160px;
-    transform-origin: center 160px;
-}
-
-/** 第三轨道的飞船 */
-.orbit-ship2 {
-    
-    top: 25%;
-    /** 旋转中心 */
-    -webkit-transform-origin: center 210px;
-    -moz-transform-origin: center 210px;
-    -ms-transform-origin: center 210px;
-    -o-transform-origin: center 210px;
-    transform-origin: center 210px;
-}
-
-/** 第四轨道的飞船 */
-.orbit-ship3 {
-   
-    top: 16%;
-    /** 旋转中心 */
-    -webkit-transform-origin: center 260px;
-    -moz-transform-origin: center 260px;
-    -ms-transform-origin: center 260px;
-    -o-transform-origin: center 260px;
-    transform-origin: center 260px;
-}
-
-/** 飞船整体 */
-.space-ship {
-    background-color: greenyellow;
-    width: 80px;
-    height: 25px;
-    border:1px solid #000;
-    border-radius: 10px;
-    overflow: hidden;
-    line-height: 25px;
-    text-align: center;
-     position: absolute;
-    left:50%; 
-    /** 旋转角度 */
-    -webkit-transform: rotate(0deg);
-    -moz-transform: rotate(0deg);
-    -ms-transform: rotate(0deg);
-    -o-transform: rotate(0deg);
-    transform: rotate(0deg);
-}
-
-/** 飞船能量条 */
-.energy {
-    width: 100%;
-    height: 100%;
-    background-color: green;
-}
-
-.emptyEnergy {
-    background-color: red;
-}
-/** 飞船能量文字 */
-/* .text {
-    position: relative;
-    left: 0;
-    top: -25px;
-} */
-
-/** 控制台整体 */
-#console {
-    background-color: rgba(150, 150, 150, 0.3);
-    width:100%;
-    border:2px solid #ddd;
-    margin-top: 10px;
-  
-}
-
-/** 控制台标题和操作面板标题 */
-#console-title, #control-title {
-    color: white;
-    background-color: blue;   
-    cursor: move;
-}
 .form-control{
   display: inline-block;
-  width: 15%;
+  width: 11%;
   padding: 4px 0px;
-  font-size: 14px;
+  font-size: 12px;
   margin-bottom: 10px;
   color: #555;
   background-color: #fff;
@@ -245,35 +72,176 @@ button:disabled,input:disabled{
     color:#fff;  
 }
 
-/** 控制台文本区 */
-#console-text {
-    overflow: auto;
-    color: white;    
+/** 指挥官所在的蓝色星球 */
+#commander {
+    position: absolute;
+    background-color: rgba(40, 255, 1, 0.95); 
+    box-shadow: inset 10px 5px 2px #2c6f16;
+    transition: box-shadow ease-in-out .15s;
+    left: 50%;
+    top: 50%;
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;  
+}
+.other {
+    position: absolute;   
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    
+}
+#other1 {
+    background-color: rgba(255, 165, 1, 0.95);  
+    box-shadow: 10px 10px 2px rgb(107, 60, 12);
+    left:90%;
+    top:68%;
+}
+#other2 {
+    background-color: rgba(255, 107, 1, 0.95);
+    box-shadow: 5px 5px 2px rgba(189, 110, 52, 0.95); 
+    width: 30px;
+    height: 30px;  
+    left:5%;
+    top:85%;
+}
+#other3{   
+    background-color: rgba(1, 138, 255, 0.95);
+    box-shadow: 10px 10px 2px #236dca;
+    width: 40px;
+    height: 40px;
+    left:7%;
+    top:5%;
+}
+/** 轨道通用样式 */
+ .orbit {
+    position: absolute;
+    border-radius: 100%;
+    border: 2px #555 solid;
+} 
+
+/** 第一轨道 */
+#orbit0 {    
+    left:44%;
+    top:42%;
+    width: 200px;
+    height: 200px; 
+}
+
+/** 第二轨道 */
+#orbit1 {   
+    left:38%;
+    top:33%;
+    width: 300px;
+    height: 300px;    
+}
+
+/** 第三轨道 */
+#orbit2 {     
+      left:32%;
+      top:26%;   
+      width: 400px;
+      height: 400px;   
+}
+
+/** 第四轨道 */
+#orbit3 {   
+    left:26%;
+    top:18%;  
+    width: 500px;
+    height: 500px;
+    
+}
+
+/** 第一轨道的飞船 */
+.orbit-ship0 {    
+    top: 41%;    
+    transform-origin: center 110px;
+}
+
+/** 第二轨道的飞船 */
+.orbit-ship1 {   
+    top: 32%;   
+    transform-origin: center 160px;
+}
+
+/** 第三轨道的飞船 */
+.orbit-ship2 {    
+    top: 25%;    
+    transform-origin: center 210px;
+}
+
+/** 第四轨道的飞船 */
+.orbit-ship3 {   
+    top: 16%;    
+    transform-origin: center 260px;
+}
+
+/** 飞船整体 */
+.space-ship {
+    background-color: greenyellow;
+    width: 80px;
+    height: 25px;
+    border:1px solid #000;
+    border-radius: 10px;
+    overflow: hidden;
+    line-height: 25px;
+    text-align: center;
+    position: absolute;
+    left:50%;     
+    transform: rotate(0deg);
+}
+
+/** 飞船能量条 */
+.energy {
+    width: 100%;
+    height: 100%;
+    background-color: green;
+}
+
+.emptyEnergy {
+    background-color: red;
+}
+
+/** 控制台整体 */
+#console {
+    background-color: rgba(150, 150, 150, 0.3);
+    width:100%;    
+    border:2px solid #ddd;
+    margin-top: 10px;   
   
 }
 
-/** 控制台输出内容 */
-#console-text p {      
-   
+/** 控制台标题和操作面板标题 */
+#console-title, #control-title {
+    color: white;
+    background-color: #00dcff;   
+    text-align: center;
+    padding:5px;
+    
+}
+/** 控制台文本区 */
+#console-text {
+    color:white;
+    overflow: auto;
+    height: 300px;           
 }
 
-/** 控制台输出内容允许复制 */
-#console-text span {
-    
- }
+
+
 
 /** 操作面板整体 */
 #control {
-    background-color: rgba(100, 100, 100, 0.3);
+    background-color: rgba(150, 150, 150, 0.3);
     width: 100%;
-    border:2px solid #555;
-
+    height: 200px;
+    
 }
 
 /** 操作面板操作区 */
 #control-main {
     overflow: auto;
     color: white;
-    padding: 5px;
+    padding: 10px 5px;
     width: 100%;
 }
