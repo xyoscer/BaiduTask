@@ -14,38 +14,38 @@
         <div data-id="0">
             <span>第一轨道</span>
             <button  data-type="create" class="btn">创建飞船</button>
-            <button  disabled="disabled" data-type="drive" class="btn">飞行</button>
-            <button  disabled="disabled" data-type="stop" class="btn">停止</button>
+            <button  data-type="drive" disabled="disabled"  class="btn">飞行</button>
+            <button  data-type="stop" disabled="disabled"  class="btn">停止</button>
             <button  data-type="destory" disabled="disabled" class="btn">销毁飞船</button>
             <input type="number" title="速度" placeholder="速度" value="1" disabled="disabled" class="form-control"/>
-            <button  disabled="disabled" data-type="rate" class="btn">设置速度</button>
+            <button data-type="rate" disabled="disabled"  class="btn">设置速度</button>
         </div>
         <div data-id="1">
             <span>第二轨道</span>
-            <button  data-type="create" data-status="create" class="btn">创建飞船</button>
-            <button  disabled="disabled" data-type="drive" data-status="start" class="btn">飞行</button>
-             <button  disabled="disabled" data-type="stop" class="btn" data-status="start">停止</button>
-             <button  data-type="destory" disabled="disabled" class="btn">销毁飞船</button>
+             <button  data-type="create" class="btn">创建飞船</button>
+            <button  data-type="drive" disabled="disabled"  class="btn">飞行</button>
+            <button  data-type="stop" disabled="disabled"  class="btn">停止</button>
+            <button  data-type="destory" disabled="disabled" class="btn">销毁飞船</button>
             <input type="number" title="速度" placeholder="速度" value="1" disabled="disabled" class="form-control"/>
-            <button  disabled="disabled" data-type="rate" class="btn">设置速度</button>
+            <button data-type="rate" disabled="disabled"  class="btn">设置速度</button>
         </div>
         <div data-id="2">
             <span>第三轨道</span>
-            <button  data-type="create" data-status="create" class="btn">创建飞船</button>
-            <button  disabled="disabled" data-type="drive" data-status="start" class="btn">飞行</button>
-             <button  disabled="disabled" data-type="stop" class="btn" data-status="start">停止</button>
+             <button  data-type="create" class="btn">创建飞船</button>
+            <button  data-type="drive" disabled="disabled"  class="btn">飞行</button>
+            <button  data-type="stop" disabled="disabled"  class="btn">停止</button>
             <button  data-type="destory" disabled="disabled" class="btn">销毁飞船</button>
             <input type="number" title="速度" placeholder="速度" value="1" disabled="disabled" class="form-control"/>
-            <button  disabled="disabled" data-type="rate" class="btn">设置速度</button>
+            <button data-type="rate" disabled="disabled"  class="btn">设置速度</button>
         </div>
         <div data-id="3">
             <span>第四轨道</span>
-            <button  data-type="create" data-status="create" class="btn">创建飞船</button>
-            <button  disabled="disabled" data-type="drive" data-status="start" class="btn">飞行</button>
-             <button  disabled="disabled" data-type="stop" class="btn" data-status="start">停止</button>
+             <button  data-type="create" class="btn">创建飞船</button>
+            <button  data-type="drive" disabled="disabled"  class="btn">飞行</button>
+            <button  data-type="stop" disabled="disabled"  class="btn">停止</button>
             <button  data-type="destory" disabled="disabled" class="btn">销毁飞船</button>
             <input type="number" title="速度" placeholder="速度" value="1" disabled="disabled" class="form-control"/>
-            <button  disabled="disabled" data-type="rate" class="btn">设置速度</button>
+            <button data-type="rate" disabled="disabled"  class="btn">设置速度</button>
         </div>
     </div>
 </div>
@@ -58,6 +58,10 @@
 <div id="planet">
 <!-- 指挥官所在的蓝色星球 -->
 <div id="commander"></div>
+<!-- 其他星球 -->
+<div class="other" id="other1"></div>
+<div class="other" id="other2"></div>
+<div class="other" id="other3"></div>
 <!-- 四条轨道 -->
 <div id="orbit0" class="orbit"></div>
 <div id="orbit1" class="orbit"></div>
