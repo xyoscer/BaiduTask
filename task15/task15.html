@@ -3,14 +3,11 @@
   <head>
     <meta charset="utf-8">
     <title>IFE JavaScript Task 15</title>
+    <link rel="stylesheet" href="task15.css">
   </head>
-  <style>
-     ul{
-      list-style-type: none;
-     }
-  </style>
+  
 <body>
-
+  <div id="descript"><h3>读取页面列表信息&&获得数据处理信息</h3><a href="https://github.com/xyoscer/BaiduTask/tree/master/task15" class="tasklink">任务总结</a></div>
   <ul id="source">
     <li>北京空气质量：<b>90</b></li>
     <li>上海空气质量：<b>70</b></li>
@@ -30,9 +27,9 @@
 
   </ul>
 
-  <button id="sort-btn">排序</button>
+  <button id="sort-btn" class="btn">排序</button>
 
-<script type="text/javascript">
+<script>
 
 /**
  * getData方法
@@ -47,12 +44,12 @@
 function getData() {
  var data = [];
   
-  var ul = document.getElementById('source');
-  for(var i=0;i<ul.childElementCount;i++){
+  var ul = document.querySelector('#source');
+  for(var i=0,len=ul.childElementCount;i<len;i++){
        var liContent = ul.children[i].innerHTML; //获得li标签里面的值     
-       var city = liContent.split("空气质量：")[0];   //对li标签里面的字符串进行分割，以“空气质量：”来分割，形成字符串数组，取第一个位置的就是所要获取的城市名字  
-       var num = ul.getElementsByTagName('b')[i].innerHTML;//取出b标签里面的值
-        data.push([city, num]);//将数组元素添加进数组data;
+       var city = liContent.split("空气质量：")[0];   //对li标签里面的字符串进行分割，以“空气质量：”来分割，形成字符串数组，取第一个位置的就是所要获取的城市名字 
+       var num = ul.querySelectorAll('b')[i].innerHTML;//取出b标签里面的值
+       data.push([city, num]);//将数组元素添加进数组data;
          
   }
    
@@ -68,7 +65,7 @@ function getData() {
 function sortAqiData(data) {
 
     data.sort(function(a,b){
-      return (a[1]-b[1]);
+      return (a[1]-b[1]);//升序排列
     })
 
     return data;
@@ -80,16 +77,18 @@ function sortAqiData(data) {
  * 格式见ul中的注释的部分
  */
 function render(data) {
-  var resort = document.getElementById('resort');
+  var resort = document.querySelector('#resort');
+  var str ="";
   for(var i=0;i<data.length;i++){
-      resort.innerHTML+="<li>第"+(i+1)+"名："+data[i][0]+"空气质量是："+"<b>"+data[i][1]+"</b>"+"</li>";
+      str+="<li>第"+(i+1)+"名："+data[i][0]+"空气质量是："+"<b>"+data[i][1]+"</b>"+"</li>";
   }
+    resort.innerHTML = str;
 }
 
 function btnHandle() {
-  var sortbtn = document.getElementById('sort-btn');
+  var sortbtn = document.querySelector('#sort-btn');
   var aqiData = getData();
-  aqiData = sortAqiData(aqiData);  
+  sortAqiData(aqiData);  
   render(aqiData);
   //button绑定事件执行完后，禁用按钮。以免重复动态生成很多内容
     sortbtn.disabled = true;
