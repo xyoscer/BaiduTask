@@ -3,10 +3,49 @@
   <head>
     <meta charset="utf-8">
     <title>IFE JavaScript Task 14</title>
+    <style>
+  *{
+    margin:0;
+    padding:0;
+  }
+#descript {
+    width: 100%;
+    padding:10px;
+    background-color: #50e3c2;
+    color:white;
+ }
+ #descript > h3 {
+     width: 50%;
+     display: inline-block;
+ }
+.tasklink {
+     display: inline-block;
+     text-decoration:none;
+     color:#ddd;
+     text-shadow: 1px 1px 2px #000;
+ }
+ .tasklink:hover {
+     color:#fff;
+ }
+#ullist {
+        list-style-type: none;
+
+      }
+li {   
+      width:200px;
+      display: block;
+      padding: 10px 15px;
+      margin-bottom: -1px;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      text-align: center;
+
+}
+    </style>
   </head>
  
 <body>
-
+  <div id="descript"><h3>数组的过滤与排序&&显示列表</h3><a href="https://github.com/xyoscer/BaiduTask/tree/master/task14" class="tasklink">任务总结</a></div>
   <h3>污染城市列表</h3>
   <ul id="aqi-list">
 <!--   
@@ -14,15 +53,15 @@
   	<li>第二名：福州（样例），10</li> -->
   </ul>
 
-<script type="text/javascript">
+<script>
 
 var aqiData = [
-  ["北京", 90],
-  ["上海", 50],
-  ["福州", 10],
-  ["广州", 50],
-  ["成都", 90],
-  ["西安", 100]
+   ["北京", 90],
+   ["上海", 50],
+   ["福州", 10],
+   ["广州", 50],
+   ["成都", 90],
+   ["西安", 100]
 ];
 
 (function () {
@@ -34,21 +73,49 @@ var aqiData = [
   */
   var ulList = document.getElementById('aqi-list');
   //思想，先对数组排序，然后筛选出值大于60的
-   aqiData.sort(function(a,b){
+  /* aqiData.sort(function(a,b) {
            return (b[1]-a[1]);
-   })
+   })*/
+  var liitem ="";
+  /*for(var i=0 ,len =aqiData.length ;i<len;i++) {
+       if(aqiData[i][1] >= 60){
+        liitem += '<li>第'
+                +(i+1)
+                +'名：'
+                +aqiData[i][0]
+                +'值为:'
+                +aqiData[i][1]
+                +'</li>';
+        }
+     ulList.innerHTML = liitem; 
+  }   */
+       /* var li = document.createElement('li'); 
+        li.className = "item";                
+        var liText = document.createTextNode("第"+(i+1)+"名:"+aqiData[i][0]+","+aqiData[i][1]);
+           ulList.appendChild( li.appendChild(liText));*/
 
-  for(var i=0;i<aqiData.length;i++){
-       if(aqiData[i][1]>=60){
-         /*  ulList.innerHTML += '<li>第'+ (i+1) +'名:'+ aqiData[i][0] + ','+aqiData[i][1]+'</li>';*/
-        var li = document.createElement('li');                 
-         var liText = document.createTextNode("第"+(i+1)+"名:"+aqiData[i][0]+","+aqiData[i][1]);
-           ulList.appendChild( li.appendChild(liText));
+//改进，使用filter(),思想：先利用filter()函数，过滤出所需的元素，然后再进行排序输出  使用指定的函数测试所有元素，并创建一个包含所有通过测试的元素的新数组
 
+         var newArr =  aqiData.filter(function(element) {
+            return element[1]>=60;
+          })
+         newArr.sort(function(a,b) {
+             return (b[1]-a[1]);
+          })
+          
+        for(var i=0 ,len =newArr.length ;i<len;i++) {
+            liitem += '<li>第'
+                +(i+1)
+                +'名：'
+                +newArr[i][0]
+                +'值为:'
+                +newArr[i][1]
+                +'</li>';
+        }
+       ulList.innerHTML = liitem; 
+  
 
-     }
-      
-  }
+   
 
   
    

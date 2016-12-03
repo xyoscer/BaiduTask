@@ -1,0 +1,64 @@
+*{
+    margin:0;
+    padding:0;
+  }
+  #descript {
+    width: 100%;
+    padding:10px;
+    background-color: #50e3c2;
+    color:white;
+ }
+ #descript > h3 {
+     width: 50%;
+     display: inline-block;
+ }
+.tasklink {
+     display: inline-block;
+     text-decoration:none;
+     color:#ddd;
+     text-shadow: 1px 1px 2px #000;
+ }
+ .tasklink:hover {
+     color:#fff;
+ }
+#source{
+      display: inline-block;
+      list-style-type: none;
+      margin:10px auto;
+      width: 300px;
+      vertical-align: top;
+    
+     }
+li {
+      width:200px;
+      padding: 10px 15px;
+      margin-bottom: -1px;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      text-align: center;
+}
+.btn{
+      padding:10px 10px;
+      border-radius: 10px;
+      cursor: pointer;
+      color:#fff;
+      border:1px solid #fff; 
+      outline:0;
+      background-color: #5cb85c;
+      border-color:#4cae4c;
+      box-shadow: 1px 1px 10px #77b85c; 
+      transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;     
+     }
+.btn:hover{   
+      background-color: #449d44;
+      border-color:#398439;
+      outline: 0;
+     }
+  #resort {
+    display: inline-block;
+    list-style-type: none;
+    margin:10px auto;
+  }
+  #resort > li {
+    width: 300px;
+  }

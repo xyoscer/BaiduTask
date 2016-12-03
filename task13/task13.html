@@ -6,8 +6,9 @@
    <link rel="stylesheet" href="task13.css">
   </head>
 <body>
+  <div id="descript"><h3>获取、显示表单的值</h3><a href="https://github.com/xyoscer/BaiduTask/tree/master/task13" class="tasklink">任务总结</a></div>
   <div id="content">
-  <label>请输入北京今天空气质量：<input id="aqi-input" type="text" class = "form-control"></label>
+  <label>请输入北京今天空气质量：<input id="aqi-input" type="text" class = "form-control" placeholder="良"></label>
   <button id="button" class="btn">确认填写</button>
   <div>您输入的值是：<span id="aqi-display">尚无录入</span></div>
 </div>
@@ -22,15 +23,25 @@
   var InputVal = document.getElementById('aqi-input');
   var span = document.getElementById('aqi-display');
   var btn = document.getElementById('button');
-  button.addEventListener('click',function(){
-      var getVal = InputVal.value;      
+
+  var showValue = function() {
+    var getVal = InputVal.value;      
       if (getVal == "") {
         getVal = "请在输入框中输入空气质量!";
       }else{
         span.innerHTML= getVal;
       }
-      
-    },false);
+    };
+
+    btn.addEventListener('click', showValue, false);
+   // 使用按回车键响应事件
+    InputVal.addEventListener("keyup",function(event) {
+            var event = event || window.event;           
+              if(event.keyCode == 13) {
+                   showValue();
+                }
+            
+         },false);
 })();
 </script>
 </body>
