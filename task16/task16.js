@@ -17,8 +17,8 @@ function addAqiData() {
 	var cityInput = document.getElementById('aqi-city-input');
 	var num = document.getElementById('aqi-value-input');
     var cityInputValue =cityInput.value.trim();
-    var  numINputValue =num.value.trim();
-  
+    var  numINputValue =num.value.trim();  
+
     	if(!cityInputValue.match(/^[A-Za-z\u4E00-\u9FA5]+$/)){
     	 alert("城市名字必须为中英文字符");
     	 cityInput.focus();
@@ -26,7 +26,7 @@ function addAqiData() {
     	}    
  
       if(!numINputValue.match(/^[0-9]+$/)){
-    	alert("请输入整数！")
+    	alert("空气质量请输入整数！")
     	num.focus();
     	return;
     }
@@ -40,18 +40,32 @@ function addAqiData() {
  */
 function renderAqiList() {
    var table = document.getElementById('aqi-table');
-   var tableItem = "<tr>"+"<td>"+"城市"+"</td>"+"<td>"+"空气质量"+"</td>"+"<td>"+"操作"+"</td>";
+   var tableItem = '<tr>'+'<td>'+'城市'+'</td>'+'<td>'+'空气质量'+'</td>'+'<td>'+'操作'+'</td>';
 
 
    	for(var pro in aqiData){
-
-   	tableItem+="<tr>"+"<td>"+pro+"</td>"+"<td>"+aqiData[pro]+"</td>"+"<td>"+"<button data-city='"+pro+"''>"+"删除"+"</button>"+"</td>";
+        if(Object.prototype.hasOwnProperty.call(aqiData,pro)) {
+           tableItem+='<tr>'
+                    +'<td>'+pro+'</td>'
+                    +'<td>'+aqiData[pro]+'</td>'
+                    +'<td>'
+                    +'<button data-city="'
+                    +pro
+                    +'"'
+                    +'class="btn">'
+                    +'删除'+'</button>'+'</td>'
+                    +'</tr>';
+        }
+   	  
    }
 
    if(pro){
-   	table.innerHTML = tableItem;
-   }else{
-   	  table.innerHTML = "<p>"+"没有内容显示"+"</p>";
+
+   	    table.innerHTML = tableItem;
+   }
+   else{
+
+   	    table.innerHTML = "<p>"+"没有内容显示"+"</p>";
    }
   
    
@@ -72,14 +86,13 @@ function addBtnHandle() {
  * 获取哪个城市数据被删，删除数据，更新表格显示
  */
 function delBtnHandle(event) {
-  // do sth.
+  
   var event = window.event||event;
   var target = event.target||event.srcElement;  
   if(target.nodeName === 'BUTTON'){
-      delete aqiData[target.dataset.city];
-        
+      delete aqiData[target.dataset.city];        
   }
- /* delete aqiData[cityInputValue] ;*/
+
   renderAqiList();
 }
 
