@@ -2,95 +2,26 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>js队列使用</title>
-	<style>
-      
-      button{
-      	width: 70px;
-      	height: 30px;
-      	border-radius: 10px;
-      	cursor: pointer;      	
-      	color: #fff;
-        background-color: #5cb85c;
-        border-color: #4cae4c;
-        outline: none;
-        margin-left: 100px;
-      }
-  button:hover {
-  color: #fff;
-  background-color: #449d44;
-  border-color: #398439;
-}
-.form-control{
-  width: 100px;
-  height: 20px;
-  padding: 6px 12px;
-  font-size: 14px;
-  line-height: 1.42857143;
-  color: #555;
-  background-color: #fff;
-  background-image: none;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
-          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
-  -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
-       -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-          transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-}
-
-
-.form-control:focus {
-  border-color: #66afe9;
-  outline: 0;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
-          box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
-}
-textarea{
-    margin-left: 5px;
-    margin-bottom: -15px;
-
-}
-#show{
-  width: 100%;
-  height: 100px;
-  border:5px solid #eee;
-  margin-top: 10px;
-}
-span{
-   color:black; 
-  font-size: 16px;
-
- display: inline-block;
- margin:5px;
- border-radius: 10px;
- background: #03A9F4;
-
-}
-p{
-   color:white; 
-  font-size: 16px;
-
- display: inline-block;
- margin:5px;
- border-radius: 10px;
- background:red;
-
-}
-	</style>
-
-
-
+	<title>js字符串的操作</title>
+	<link rel="stylesheet" href="task20.css">
 </head>
 <body>
+<div id="descript"><h3>字符串操作</h3><a href="https://github.com/xyoscer/BaiduTask/tree/master/task20" class="tasklink">任务总结</a></div>
  <fieldset>
-
-    <legend>输入框文本查询高亮显示操作</legend>    
-    <label>请在文本框中输入内容</label><textarea  class="form-control" id="inputValue"></textarea>
+    <legend>输入框文本查询高亮显示操作</legend>
+    <div class="form-group">   
+    <label>输入这个试试asg;jfg'cv.kk,gg
+bght do</label>
+    <textarea  class="form-control" id="inputValue" placeholder="输入一段字符串"></textarea>
+    </div> 
+    <div class="form-group">    
+    您查找的内容为：
+    <input type="text" class="form-control" id="searchValue">
     <button id="search">查询</button>
-    <label>您查找的内容为：</label><input type="text" class="form-control" id="searchValue">
-    
-  </fieldset>   <div id="show"></div>
-  <script src="task20(1).js"></script>
+    </div>
+  </fieldset> 
+  <div id="showOrigin"></div> 
+ 
+  <script src="task20.js"></script>
 </body>
 </html>

@@ -38,10 +38,13 @@ function Queue(){
 }
 //可视化队列数据
 function viewData(showArr,id){
-	var text="";	
-	for(var i=0;i<showArr.length;i++){	 	  
+	var text="";
+    showArr.forEach(function(ele,index,arr) {
+        text += `<div class= "tag">${ele}</div>`;
+    })	
+	/*for(var i=0;i<showArr.length;i++){	 	  
 		text+="<div class= 'tag'>"+showArr[i]+"</div>";
-	}
+	}*/
 	id.innerHTML="";
 	id.innerHTML=text;   
     input.value=""; 
