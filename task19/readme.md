@@ -37,10 +37,72 @@
 };
 ```
 
-   冒泡排序优化
+####任务总结
+
+
+  - 使用命名空间的方法，将一个对列的操作封装在一个对象中，调用起来比较方便
+  
+ ```javascript
    
-      对冒泡排序的优化主要是减少交换次数。如果一次扫描中元素没有发生交换，那么排序就可以结束了。为此可设置一标志量flag
+   var items = [];//存放队列元素中的数组
+   var queue = {	 
 
+	//对列左近
+	Lenqueue: function(ele) {
+         items.unshift(ele);
+	},
+	//对列右近
+	Renqueue: function(ele) {
+		items.push(ele);
+	},
+	Ldequeue: function(){
+		return(items.shift());       
+	},
+	Rdequeue: function(){
+		return(items.pop());       
+	},
+	Size: function() {
+		return items.length;
+	}
+   
+};
+     
+ ```
+ 
+ - 继续使用事件代理，为每一个button的父元素绑定点击事件，根据不同情况来响应各个button的事件，尽量的减少页面上的dom操作和事件监听
+ 
+ - 学习使用ES6中的`字符串模板`，代替字符串拼接，操作很方便
+ 
+    模板字符串（template string）是增强版的字符串，用反引号（`）标识。它可以当作普通字符串使用，也可以用来定义多行字符串，或者在字符串中嵌入变量。模板字符串使用`反引号（``）`包裹，变量使用`${}`包裹
+    
+  使用字符串模板与不使用对比：：
+    
+```javascript
+  function viewData(showArr,color){
+	var text = "";	
+	for(var i=0;i<showArr.length;i++){  
+		//使用简单的字符串拼接 
+		
+		text += '<div title="'
+		       +showArr[i]
+		       +'"'
+		       +'style = height:'
+		       +showArr[i]*5
+		       +'px;background:'
+		       +color
+		       +'>'
+		       +'</div>';
+		       
+                    //使用字符串模板		
+        text +=`<div title="${showArr[i]}" style="height:${showArr[i]*5}px;background:${color}"></div>`
 
-     
-     
+	}
+	queueDiv.innerHTML = "";
+	queueDiv.innerHTML = text;   
+	document.getElementById('num').value = ""; 
+	
+}
+``` 
+- 使用定时器`setInterval`完成排序算法的一步步显示
+
+        使用两个嵌套if语句控制排序过程，外部if语句表示执行次数，内部if语句进行相邻两个数的比较，每两个相邻数字，通过比较，交换完之后，绘制一次图形，j++，然后通过定时器继续执行函数，当一次的相邻数字比较完之后，一个数字冒泡出来，i++，此时内部j=0,继续执行定时器函数，如此反复，直到i=数组的长度，定时器清除掉。
