@@ -8,35 +8,27 @@ function addEventHandler(ele, event, hanlder) {
         ele["on" + event] = hanlder;
     }
 }
-//实现对列的类,利用数组实现类操作
-function Queue(){
-	var items = [];
-    //对列左近
-	this.Lenqueue = function(element){
-		items.unshift(element);
-	};
-    //对列右近
-	this.Renqueue = function(element){
-		items.push(element);
-	};
-    //对列左出
-	this.Ldequeue = function(){
-		return(items.shift());       
-	};
-	 //对列右出
-	this.Rdequeue = function(){
-		return(items.pop());
-       
-	};	
-	this.size = function(){
-		return items.length;
-	};
-	this.print = function(){
-		return items;
-	}
-}
-var queueDiv = document.getElementById('queue');
+var items = [];//存放队列元素中的数组
+var queue = {	 
 
+	//对列左近
+	Lenqueue: function(ele) {
+         items.unshift(ele);
+	},
+	//对列右近
+	Renqueue: function(ele) {
+		items.push(ele);
+	},
+	Ldequeue: function(){
+		return(items.shift());       
+	},
+	Rdequeue: function(){
+		return(items.pop());       
+	},	
+   
+}
+
+var queueDiv = document.getElementById('queue');
 var parentBtn = document.getElementById('parentBtn');
  addEventHandler(parentBtn,'click',move);
  function move(event) {
@@ -69,10 +61,10 @@ var parentBtn = document.getElementById('parentBtn');
     	 break;
 
      }
-      viewData(queue.print());
+      viewData(items);
  }
    
-var queue = new Queue();
+
 
 //获得input中的值
 function getInputValue(){
@@ -89,18 +81,29 @@ function getInputValue(){
 function viewData(showArr){
 	var text = "";
      for(var i=0 ,len=showArr.length;i<len;i++){	    
-		text += '<div class="queueItem"'
+		/*text += '<div class="queueItem"'
 		     +'data-item="'
 		     +i
 		     +'">'
 		     +showArr[i]
-		     +'</div>';
+		     +'</div>';*/
+		    //尝试使用ES6的模板字符串来添加，表示很方便
+		  text += `<div class="queueItem" data-item=${i}>${showArr[i]}</div>`
 	}
 	queueDiv.innerHTML = "";
 	queueDiv.innerHTML += text;   
 	document.getElementById('num').value = "";
+	var queueItems = document.getElementsByClassName('queueItem');
+	//为每一个新增的元素添加点击删除元素，使用splice(),删除完元素，在进行重新显示数组
+    [].forEach.call(queueItems,function(v){
+   	   addEventHandler(v, "click", function() {
+   	   	  items.splice(v.dataset.item, 1);
+   	   	  viewData(items);
+   	   });
+   	  
+   })
+
 }
 
-  addEventHandler(queueDiv,'click',delItem);
-
+  
 
