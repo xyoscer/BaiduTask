@@ -14,130 +14,91 @@ function addEventHandler(ele, event, hanlder) {
        ele["on" + event] = hanlder;
    }
 }
-
-//实现对列的类
-function Queue(){
-	var items = [];
-	
-	this.Renqueue = function(element){
-		items.push(element);
-	};
-
-	this.Ldequeue = function(){
-		items.shift();
-       
-	};	     
-
-	this.size = function(){
-		return items.length;
-	};
-	this.print = function(){
-		return items;
-	};
-	
-}
-//可视化队列数据
-function viewData(showArr,id){
-	var text="";
-    showArr.forEach(function(ele,index,arr) {
-        text += `<div class= "tag">${ele}</div>`;
-    })	
-	/*for(var i=0;i<showArr.length;i++){	 	  
-		text+="<div class= 'tag'>"+showArr[i]+"</div>";
-	}*/
-	id.innerHTML="";
-	id.innerHTML=text;   
-    input.value=""; 
-	
+var arrDeal = function(array) {
+    this.arr = array;
+   
+};
+arrDeal.prototype.addArray = function(element) {
+     this.arr.push(element);
+     if(this.arr.lenght > 10) {
+         this.arr.shift();
+     }
+};
+arrDeal.prototype.delDuplicateArr = function(element) {
+    for(let i=0;i<this.arr.length;i++) {
+         if(element == this.arr[i]) {
+             this.arr.splice(i,1); //去重操作
+                 }
+              }
+};
+arrDeal.prototype.showArray = function(showArea) {
+    var text = "";
+    this.arr.forEach(function(ele,index,arr) {
+        text += `<div class = "tag">${ele}</div>`;
+    })
+    showArea.innerHTML = "";
+    showArea.innerHTML = text;
+    input.value = '';  
+     
 }
 
-var queue = new Queue();
-var queue2 = new Queue();
+var tagArray = [];
 
-addEventHandler(input,'keyup',showTag);
-addEventHandler(show,'click',change);
-addEventHandler(hobby,'click',showHobby);
-addEventHandler(showhobby,'click',change);
+var tag = new arrDeal(tagArray);
+
+
+addEventHandler(input, 'keyup', showTag);
+addEventHandler(show, 'click', change);
+addEventHandler(hobby, 'click', showHobby);
+addEventHandler(showhobby, 'click', change);
 //输入文本进行处理
-function inputDeal(inputValue){
+function inputDeal(inputValue) {
 	 var inputArray = [];
-    inputArray = inputValue.split(/[,，;；、\s\n]+/);   
+     //遇到空格，回车，逗号
+    inputArray = inputValue.split(/[,，\s]+/);   
     return inputArray;
 }
 
 //展示标签
- function showTag(event){
-       var tagValue = input.value;      
-     if (/[,，;；、\s\n]+/.test(tagValue) || event.keyCode == 13) {		
-     	var data = inputDeal(tagValue.trim());
-     	var  arr = queue.print();
-     	if(arr.length){
-     		 var quchong = arr.every(function(x){
-                     return (x!=data[0])?true:false;
-     		});
-     		if(quchong){
-     			 if(arr.length>9){                   
-     			 	queue.Ldequeue();
-     			 }else{
-     			 	queue.Renqueue(data[0]);
-			        viewData(queue.print(),show);
-     			 }
-     			 
-     			
-     		}
-     		else{
-     		 	input.value = '';
-     		 	return;
-     		 }
-     		
-     	}
-			
-     else{
-     	queue.Renqueue(data[0]);
-	    viewData(queue.print(),show);
-     }
+ function showTag(event) {    
+    var tagValue = input.value; 
+    //遇到空格，回车，逗号，显示过滤后的tag     
+     if (/[[,，\s]+/.test(tagValue) ||event.keyCode === 13) {
+        var showTagValue = tagValue.trim().split(/[,，\s]+/)[0];    
+         if(tagArray.length) {
+             tag.delDuplicateArr(showTagValue);
+             tag.addArray(showTagValue);
+             tag.showArray(show);
+         }
+         else {
+            tag.addArray(showTagValue);
+            tag.showArray(show);
+         }    	
      	
-     	}
+    }
 }
 	
 //删除标签
-function  change(event){
-	var event = window.event||event;
-	var target = event.target||event.srcElement;
+function  change(event) {
+	var event = window.event || event;
+	var target = event.target || event.srcElement;
 	    target.parentNode.removeChild(target); 
 		
 	}
-	
+var hobbyArray = [];	
 //显示爱好
 function showHobby(){
 	 var hobbyValue = document.getElementsByTagName('textarea')[0].value.trim();     
-
-     var data = inputDeal(hobbyValue);
-     var  arr = queue2.print();
-     	for(var i=0;i<data.length;i++){
-     		if(queue2.size()){
-     		      var quchong = arr.every(function(x){
-                     return (x!=data[i])?true:false;
-     		    });
-     		if(quchong){
-     			 if(queue2.size()>=10){                   
-     			 	queue2.Ldequeue();
-     			 }
-     			 	queue2.Renqueue(data[i]);
-			        viewData(queue2.print(),showhobby);
-     			
-     			 
-     			
-     		} else{
-     		 document.getElementsByTagName('textarea')[0].value = '';
-     		 	return;
-     		 }
-     		
-     	} else{
-     	queue2.Renqueue(data[i]);
-	    viewData(queue2.print(),showhobby);
-     }
-  }     	
+     var hobbyArray = hobbyValue.split(/[；;]+/);    
+     var set =  [...new Set(hobbyArray)];    
+    
+     if(set.length > 10) {
+             set.shift();
+         }
+     var hobby = new arrDeal(set);    
+     var hobby = new arrDeal(set);
+      hobby.showArray(showhobby); 	
      	
 }
 
+ 
