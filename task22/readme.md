@@ -30,7 +30,8 @@
     - attachEvent();
  2. 学会使用事件代理机制，将事件绑定到父元素上，减少绑定事件的个数，使用target.id获得该进行前序遍历或中序遍历，或后续遍历。
  
-  - 先序遍历：
+ -  先序遍历：
+ 
 ```javascript
 function preOrder(node){
  if(!(node == null)) {
@@ -63,26 +64,30 @@ function preOrder(node){
  }
  ```
  
-3. 将遍历结果以动画的形式在一定的时间间隔下进行显示：使用计时器函数setInterval(),给遍历过的节点数组循环进行样式显示。
+  3. 将遍历结果以动画的形式在一定的时间间隔下进行显示：使用计时器函数setInterval(),给遍历过的节点数组循环进行样式显示。
 setTimeout和setInterval只是简简单单地通过插入代码到代码队列来实现代码的延迟执行（或者说异步执行）
  
-    - setInterval() 方法可按照指定的周期（以毫秒计）来调用函数或计算表达式。返回一个 intervalID会不停地调用函数，直到 clearInterval() 被调用或窗口被关闭。
+   -  setInterval() 方法可按照指定的周期（以毫秒计）来调用函数或计算表达式。返回一个 intervalID会不停地调用函数，直到 clearInterval() 被调用或窗口被关闭。
      
-     第一个参数：想要重复的函数代码
-     第二个参数：每次延迟的毫秒数
+             第一个参数：想要重复的函数代码
+             第二个参数：每次延迟的毫秒数
      
-   - clearInterval() 方法取消setINterval()设置的定时器   window.clearInterval(intervalID)
-        参数为：setINterval()传回的id
+ -  clearInterval() 方法取消setINterval()设置的定时器 
+ 
+          window.clearInterval(intervalID)    参数为：setINterval()传回的id
         
-   - setTimeout() 设置一个定时器,在定时器到期后执行一次函数或指定代码段
-       var timeoutId = window.setTimeout(code,delay)  //
+ - setTimeout() 设置一个定时器,在定时器到期后执行一次函数或指定代码段
+  
+          var timeoutId = window.setTimeout(code,delay)  
        
       
-   - clearTimeout() 清除由setTimeout()设置的延时定时器。
-       window.clearTimeout(timeoutID)  参数为setTimeout返回的ID
+ - clearTimeout() 清除由setTimeout()设置的延时定时器。 
+ 
+              window.clearTimeout(timeoutID)  参数为setTimeout返回的ID
    
-   - 对象.className = " 类名"，空格类名，在原有类的基础上在给它添加样式类
-  -treeList[i-1].className = treeList[i-1].className.replace(/animate/,"normal");使用replace()函数，用后面的类样式取代前面的类样式。
+  -  对象.className = " 类名"，空格类名，在原有类的基础上在给它添加样式类
+  
+    treeList[i-1].className = treeList[i-1].className.replace(/animate/,"normal");使用replace()函数，用后面的类样式取代前面的类样式。
   
         （1）className 用来获取或设置指定元素的class属性的值.
     
