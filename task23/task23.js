@@ -16,19 +16,14 @@ var head = null;
 var timer1 = null;
 var root = document.getElementById('root');
 var divs = document.getElementsByTagName('div');
-var presearch = document.getElementById('preSearch');
-var postsearch = document.getElementById('postSearch');
 var deal = document.getElementById('deal');
  
 addEventHandle(deal, "click", treeDeal);
-/*addEventHandle(search,"click",searchValue);*/
  
 function treeDeal(event) {
     var event = event || window.event;
-    var target = event.target || event.srcElement;
- 
-    reset();
- 
+    var target = event.target || event.srcElement; 
+    reset(); 
     switch (target.id) {
     case "pre":
         preOrder(root);
@@ -56,7 +51,7 @@ function treeDeal(event) {
 //树的先序遍历
  
 function preOrder(node) {
-    if (!(node == null)) {
+    if (node) {
         var tempNode = node.firstElementChild || null;
         treeList.push(node);
         while (tempNode) {
@@ -71,7 +66,7 @@ function preOrder(node) {
 //树的后序遍历
  
 function postOrder(node) {
-    if (!(node == null)) {
+    if (node) {
         var tempNode = node.firstElementChild || null;
         while (tempNode) {
             postOrder(tempNode);
@@ -81,10 +76,10 @@ function postOrder(node) {
     }
 }
  
-//显示的样式
+//显示的样式,使用setTimeout()来进行动画显示
  
 function changeStyle() {
-    head = treeList.shift(); //出队
+   head = treeList.shift(); //出队
     if (head) {
         head.className += " animate";
         timer1 = setTimeout(function () {
@@ -93,17 +88,32 @@ function changeStyle() {
         }, 800);
  
     }
+    /*var i = 0;    
+    treeList[i].classList.add("animate");
+    timer = setInterval(function () {
+        i++;
+        if (i < treeList.length) {           
+            treeList[i - 1].className = treeList[i - 1].className.replace(/animate/, "normal");            
+            treeList[i].classList.add("animate");
+ 
+        } else {
+            clearInterval(timer);
+            treeList[treeList.length - 1].className = treeList[i - 1].className.replace(/animate/, "normal");
+ 
+ 
+        }
+    }, 1000);*/
+   
 }
  
  
 //每次进行遍历前都将所有样式去掉，并且使treeList[]清空
  
 function reset() {
-    clearInterval(timer1);
+    clearTimeout(timer1);
     for (var i = 0; i < divs.length; i++) {
-        divs[i].className = divs[i].className.replace(/normal|animate/, "");
-    }
- 
+        divs[i].className = divs[i].className.replace(/normal|animate|search/, "");
+    } 
     treeList = []; //清空队列
 }
  
@@ -116,17 +126,17 @@ function showValue() {
     head = treeList.shift(); //出队
     if (head) {
         text = head.firstChild.nodeValue.trim();
-        if(input ==""){
+        if(input == "") {
             alert("请输入搜索的值")
-        }else{
+        }else {
             if (text === input) {
-            head.style.backgroundColor = "pink";
-            flag = true;
+                head.className += " search";
+                flag = true;
             return;
-        } else {
-            head.className += " animate";
-            timer1 = setTimeout(function () {
-                head.className = head.className.replace(/animate/, "normal");
+           } else {
+                head.className += " animate";
+                timer1 = setTimeout(function () {
+                head.className = head.className.replace(/animate|search/, "normal");
                 showValue(); //递归调用，使要显示的节点不停出队显示，直至为空
             }, 800);
         } 

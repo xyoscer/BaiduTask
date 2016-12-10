@@ -10,11 +10,9 @@ function addEventHander(ele, event, handle) {
     }
 }
 var treeList = [];
-var root = document.getElementById('root');
-var btn = document.getElementsByTagName('button');
 var timer = null;
-var deal = document.getElementById('deal');
- 
+var root = document.getElementById('root');
+var deal = document.getElementById('deal'); 
 addEventHander(deal, "click", treeDeal);
  
 /**
@@ -54,8 +52,7 @@ function preOrder(node) {
 //中序遍历
  
 function inOrder(node) {
-    if (!(node == null)) {
- 
+    if (!(node == null)) { 
         inOrder(node.firstElementChild);
         treeList.push(node);
         inOrder(node.lastElementChild);
@@ -74,14 +71,13 @@ function postOrder(node) {
 //每个1s,动画形式显示一次遍历的结果
  
 function changeStyle() {
-    var i = 0;
-    treeList[i].className += " animate";
+    var i = 0;    
+    treeList[i].classList.add("animate");
     timer = setInterval(function () {
         i++;
-        if (i < treeList.length) {
- 
-            treeList[i - 1].className = treeList[i - 1].className.replace(/animate/, "normal");
-            treeList[i].className += " animate";
+        if (i < treeList.length) {           
+            treeList[i - 1].className = treeList[i - 1].className.replace(/animate/, "normal");            
+            treeList[i].classList.add("animate");
  
         } else {
             clearInterval(timer);
