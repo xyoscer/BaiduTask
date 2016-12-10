@@ -15,47 +15,43 @@ var head = null;
 var timer1 = null;
 var root = document.getElementsByClassName('root')[0];
 var divs = document.getElementsByTagName('div');
-var presearch = document.getElementById('preSearch');
-var postsearch = document.getElementById('postSearch');
+var tree = document.getElementById('tree');
 var deal = document.getElementById('deal');
-var delBtn = document.getElementById('del');
-var addBtn = document.getElementById('add');
+var del_add = document.getElementById('del_add');
 var selected = null;
 
-//监听事件
-addEventHandle(deal,"click",treeDeal);
-addEventHandle(delBtn,"click",delNode);
-addEventHandle(addBtn,"click",addNode);
 
-for(var i=0;i<divs.length;i++){
-        addEventHandle(divs[i],"click",highlightShow);
-    }   
+//监听事件
+//给所有节点div的父元素添加点击事件，减少整个页面的注册事件太多
+addEventHandle(tree,"click",highlightShow);
+addEventHandle(deal,"click",treeDeal);
+addEventHandle(del_add, "click",del_addNode);
+
 
 //点击某个节点元素，则该节点元素呈现一个特殊被选中的样式
 function highlightShow(event){
      var event = event||window.event;
-     this.style.backgroundColor = "#00ffff";  
-    
-     for(var i=0;i<divs.length;i++){
-      if(divs[i]!= this){
-       divs[i].style.backgroundColor = "#fff";
-       
-      }
-    }
-     if(event.stopPropagation){
-        event.stopPropagation();
-     }else{
-        event.cancelBubble = true;
-     }
-      selected = this;//保存选中的节点在变量selected中
+     var target = event.target||event.srcElement;    
+     if(target.nodeName === 'DIV'){      
+        for(var i=0;i<divs.length;i++){   
+             if(target != divs[i]) {
+                divs[i].style.backgroundColor = '#fff';
+
+             }else {
+               target.style.backgroundColor = "#00ffff";
+             }
+         } 
+               
+        }  
+        
+      selected = target;//保存选中的节点在变量selected中，供增加删除节点使用
 
 
 }
 //对树进行遍历与搜索
 function treeDeal(event){
 	var event = event||window.event;
-	var target = event.target||event.srcElement;
-	
+	var target = event.target||event.srcElement;	
 	reset();
 	switch(target.id){
 		case "pre":preOrder(root);
@@ -66,8 +62,7 @@ function treeDeal(event){
 		break;		
 		case "postSearch":postOrder(root);
 		break;
-		default:
-		break;
+		
 	}
 	if(target.id =="pre"||target.id == "post"){
 		changeStyle();
@@ -77,10 +72,22 @@ function treeDeal(event){
 	}
 	
 }
-
+//增删操作
+function del_addNode(event) {
+    var event = event || window.event;
+    var target = event.target || event.srcElement;
+   switch(target.id){    
+    case "del": delNode();
+    break;    
+    case "add": addNode();
+    break;
+   
+  }
+ }    
+ 
 //树的先序遍历
 function preOrder(node){
-    if(!(node ==null)){
+    if(node){
     	var tempNode = node.firstElementChild||null;
     	    treeList.push(node);     	   
     	while(tempNode){
@@ -94,7 +101,7 @@ function preOrder(node){
 }
 //树的后序遍历
 function postOrder(node){
-	 if(!(node ==null)){	   
+	 if(node){	   
     	var tempNode = node.firstElementChild||null;    	    
     	while(tempNode){     		
     		postOrder(tempNode);
@@ -108,8 +115,7 @@ function postOrder(node){
 function changeStyle(){	
 
 	 	head = treeList.shift(); //出队
-            if (head) {
-               
+            if (head) {               
                 head.style.backgroundColor = "yellow";
                 head.className +=" animate";                 
                 timer1 = setTimeout(function () {                  
@@ -124,7 +130,7 @@ function changeStyle(){
 
 //每次进行遍历前都将所有样式去掉，并且使treeList[]清空
 function reset(){
-	clearInterval(timer1);
+	clearTimeout(timer1);
 	for(var i=0;i<divs.length;i++){		
     divs[i].style.backgroundColor = "#fff";
     divs[i].className = divs[i].className.replace(/normal|animate/,"");
@@ -136,11 +142,11 @@ function reset(){
 
 //搜索结果时的样式展示
  function showValue(){
-  	var input = document.getElementsByTagName('input')[0].value.trim();
+  	var  input = document.getElementsByTagName('input')[0].value.trim();
   	var flag = false;
   	head = treeList.shift(); //出队
             if (head) {
-                text = head.firstChild.nodeValue.trim();
+               var text = head.firstChild.nodeValue.trim();
                   if(input ==""){
                     alert("请输入搜索内容");
                   }else{
@@ -160,7 +166,7 @@ function reset(){
 
             }
         } else{
-            	if(flag==false){
+            	if(flag == false){
             		alert("该元素不存在");
             		document.getElementsByTagName('input')[0].value = "";
             		document.getElementsByTagName('input')[0].focus();
@@ -169,41 +175,30 @@ function reset(){
      
  }
   //点击树中的节点对其进行删除 
- function delNode(){
-    if(selected === null){
+ function delNode() {
+    if(selected === null) {
         alert("请先选择要删除的节点");
     }else{
     
-          var parent = selected.parentNode;
-          var childNum = selected.childElementCount;           
-           /* while(childNum){
-                selected.removeChild(selected.firstElementChild);                 
-                childNum--;
-            }       */   
+          var parent = selected.parentNode;         
             parent.removeChild(selected);
         }    
    }
 
 //搜索框中获得要插入的节点内容，根据树中选中的节点，在其后进行插入操作
- function addNode(){
-    var addValue = document.getElementsByTagName('input')[1].value.trim();
-
-    if(addValue ==""){
+ function addNode() {
+    var addValue = document.getElementsByTagName('input')[1].value.trim();    
+    if(addValue == "") {
         alert("请先输入插入节点内容");
-    }else if(selected === null){
+    }else if(selected === null) {
             alert("请先选中要操作的节点");
-    }else{
-
-        selected.innerHTML +="<div class='child3'>"+addValue+"</div>";
+    }else {
+           selected.innerHTML += `<div class='child3'>${addValue}</div>`;
+        
           document.getElementsByTagName('input')[1].value = "";
        
     } 
-     //更新点击事件
-
-       for(var i=0;i<divs.length;i++){
-        addEventHandle(divs[i],"click",highlightShow);
-    }   
-           
+    
+     addEventHandle(tree,"click",highlightShow);      
 }
-     
  

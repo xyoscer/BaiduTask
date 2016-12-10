@@ -1,6 +1,24 @@
-body {
-    margin:0;
-    background-color: transparent;
+* {
+    margin: 0;
+    padidng: 0;
+}
+#descript {
+    padding:10px;
+    background-color: #50e3c2;
+    color: #fff;
+}
+#descript > h3 {
+    width: 50%;
+    display: inline-block;
+}
+.tasklink {
+    display: inline-block;
+    text-decoration: none;
+    color: #ddd;
+    text-shadow: 1px 1px 2px #000;
+}
+.tasklink:hover {
+    color: #fff;
 }
 #root {
     width: 300px;
@@ -43,19 +61,17 @@ body {
     border-color: #4cae4c;
     outline: none;
 }
-button:hover {
+.btn:hover {
     color: #fff;
     background-color: #449d44;
     border-color: #398439;
 }
 .animate {
-    background-color: yellow;
-    /*  transform: rotate(360deg);  */
+    background-color: yellow;  
     border-radius: 50px;
     transition: all 2s ease-in-out;
 }
 .normal {
-    border-radius: 0;
-    /* background-color: #eee; */
+    border-radius: 0;   
     transition: all 1s ease-in-out;
 }
