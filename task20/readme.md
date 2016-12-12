@@ -26,6 +26,8 @@
       
       -  使用新的元素样式替代原来span.innerHTML， var temp = `<p>${searchValue}</p>`
       
+      后期改进，使用语义化标签var temp = `<mark>${searchValue}</amrk>`高亮搜索的结果
+      
       
       
 ####任务总结
