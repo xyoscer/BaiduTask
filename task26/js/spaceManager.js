@@ -1,5 +1,5 @@
 /**
- * 宇宙管理员（上帝），使用单例模式创建宇宙管理员
+ * 宇宙管理员（上帝)
  */
 var spaceManager = {
     // 宇宙管理员（上帝）的记事本
@@ -18,7 +18,7 @@ var spaceManager = {
     createSpaceShip: function(orbitId) {
         //创建飞船对象并保存到数组
         var planet = document.getElementById('planet');
-        this.notebook.spaceShipList.push(SpaceShip(orbitId));
+        this.notebook.spaceShipList.push(new Ship(orbitId));
         //创建飞船主体div
         var spaceshipDiv = document.createElement("div");
         spaceshipDiv.id = "spaceship" + orbitId;
@@ -32,6 +32,7 @@ var spaceManager = {
         energyDiv.appendChild(textDiv);
         //将飞船显示到页面上
        planet.appendChild(spaceshipDiv);
+
     },
     //无线电，向宇宙中的飞船广播消息
     Mediator: {
@@ -50,11 +51,11 @@ var spaceManager = {
                 log("[广播消息]:"+"向轨道" + (message.id + 1) + "发送 " + message.command + " 指令成功！", "green");
                 for(var i = 0; i < spaceManager.notebook.spaceShipList.length; i++) {
                     //已销毁的飞船不处理
-                    if(spaceManager.notebook.spaceShipList[i]._destroyed) {
+                    if(spaceManager.notebook.spaceShipList[i].destroyed) {
                         continue;
                     }
                     //向飞船发送消息
-                    spaceManager.notebook.spaceShipList[i].telegraph.sendMessage(message);
+                    spaceManager.notebook.spaceShipList[i].sendMessage(message);
                 }
             }, 1000);
         },
