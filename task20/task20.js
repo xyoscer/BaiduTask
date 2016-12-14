@@ -44,7 +44,7 @@ function showContent() {
 	spansArr.forEach(function(ele,index,array) {
 		 var spanContent = ele.innerHTML;		 
 		 var Reg = new RegExp(searchValue,"g");
-		 var temp = `<p>${searchValue}</p>`
+		 var temp = `<mark>${searchValue}</mark>`
 		 var newContent = spanContent.replace(Reg,temp);
 		 	   ele.innerHTML = newContent;	 
 
