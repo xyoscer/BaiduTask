@@ -24,15 +24,38 @@
         2.指挥官并不知道自己的指令是不是真的传给了飞船，飞船的状态他是不知道的，他只能通过自己之前的操作来假设飞船当前的状态
         3.每个飞船通过信号接收器，接受到通过Mediator传达过来的指挥官的广播信号，但因为是广播信号，所以每个飞船能接受到指挥官
         发出给 所有飞船的所有指令， 因此需要通过读取信息判断这个指令是不是发给自己的
-           
+
+
 ##任务总结：
 
    （1）设计模式的学习
    
-   （2）inline-block的学习
+   （2）箭头函数学习使用
+   
+         
+        -  箭头函数是一个简写的表达式，他总是匿名的，它的作用是拥有词法作用域中的this值，可以解决内层嵌套函数的this指向问题，代替了                 var  that = this；的这种保存当前作用域下的this值。而且可以函数的书写变的简短。
+             
+        - 基本用法：
+               
+              (param1, param2, …, paramN) => { statements }
+             
+              (param1, param2, …, paramN) => expression
+             
+              // 返回对象字面量时应当用圆括号将其包起来:
+               params => ({foo: bar})
+        
+  
    
    （3）console.log()的学习
    
+           基础输出     console.log('123');
+           格式化输出   console.log('%d + %d = %d', 1, 1, 2);  跟c语言的print打印那个类似
+           %s 表示输出字符串
+           %f 浮点树
+           %o 表示对象   console.log("%o",document.body);
+           %O 表示对象   console.log("%O",document.body);
+           %c css样式   console.log("%c前端学习",'color:red;font-size:26px');
+   
    （4）字符串转换为整数的学习
    
    （5）data-属性的学习
