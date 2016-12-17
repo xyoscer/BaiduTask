@@ -8,9 +8,10 @@ var timer;
  * @type {function}
  */
 var timer1;
+//使用构造函数加原型模式创建对象
 function Ship(orbit) {
 	this.orbit = orbit;
-	this.status = 0;
+	this.status = 0; //0表示停止，1表示开始
         //当前能源
     this.energy = 100;
         //已经销毁
@@ -24,7 +25,25 @@ function Ship(orbit) {
 //动力系统
 Ship.prototype.driveStart = function(){
 	 clearInterval(timer1);
-	 var that = this;
+     //使用箭头函数，来绑定上下文的this值
+     timer = setInterval(() => {
+         if(this.energy > 0) {
+            this.status = 1;//开始飞行
+            this.angle += this.rate;
+            var ship = document.getElementById("spaceship"+this.orbit);
+            ship.style.transform = `rotate(${this.angle}deg)`;
+            this.consumeEnergy(2);
+            if(this.getEnergy() <= 30) {
+                ship.firstElementChild.className = "emptyEnergy";
+            }
+            ship.firstElementChild.style.width = this.getEnergy() + "%";
+            ship.firstElementChild.innerHTML = this.getEnergy() + "%";
+         }else{
+            clearInterval(timer);
+            this.driveStop(this.orbit);
+         }
+     },1000);
+	/* var that = this; //使用that来保存当前的this对象     
      timer = setInterval(function () {
         if (that.energy > 0) {
              that.status = 1;
@@ -42,16 +61,16 @@ Ship.prototype.driveStart = function(){
  
            } else { //飞船能量小于等于0自动停止行驶，并进行太阳能充电
                  clearInterval(timer);
-                 driveStop(that.orbit);
+                 that.driveStop(that.orbit);
               }
       }, 1000);
- 
+ */
 
 };
 Ship.prototype.driveStop = function() {
 	this.status = 0;
     clearInterval(timer);
-    var that = this;
+    var that = this; 
     timer1 = setInterval(function () {
          that.addEnergy(4); //添加能量
     var ship = document.getElementById("spaceship" + that.orbit);

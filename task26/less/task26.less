@@ -1,0 +1,246 @@
+@charset "uft-8";
+@fS: 16px;
+@color:#50e3c2; 
+@fcolor:#fff;
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+html,body {
+	width: 100%;
+	height: 100%;
+	background-color: #02071d;
+}
+#descript {
+	padding: 10px;
+	background-color: @color;
+	color: @fcolor;
+	h3 {
+		width: 50%;
+		display: inline-block;
+	}
+	a {
+		display: inline-block;
+		text-decoration: none;
+		color: #ddd;
+		text-shadow :1px 1px 2px #000;
+		&:hover {
+		color: @fcolor;
+	  }
+	}
+	   
+}
+#left {
+	width: 500px;
+	float: left;
+	border: 2px solid @fcolor; 
+
+}
+#planet {
+	position: relative;
+	overflow: hidden;
+	margin-left: 500px;
+	height: 600px;
+}
+.form-control {
+	display: inline-block;
+	width: 11%;
+	padding: 4px 0;
+	font-size: @fS - 4;
+	margin-bottom: 10px;
+	color: #555;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+	transition: border ease-in-out .15s, box-shadow ease-in-out .15s;
+	&:hover {
+		border-color: @fcolor;
+		outline: 0;
+		box-shadow: inset 0 1px 1px #fff, 0 0 8px ##50e3c2;
+	}
+}
+.btn {
+	display: inline-block;
+	height: 33px;
+	padding: 6px;
+	font-size: @fS - 2;
+	line-height: 1.4;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	cursor: pointer;
+	border: 1px solid transparent;
+	border-radius: 4px;
+	background-color: @color;
+	color: @fcolor;
+	&:hover {
+       color: #333;
+       background-color: #30e3c2;
+	}
+}
+button:disabled,input:disabled{
+    background-color: #ddd;
+    color:@fcolor;  
+}
+/* 蓝色星球 */
+@orbitW: 100px; //轨道的宽
+@orbitH: 100px;
+@orbitR: 50%; //轨道的圆角
+@orbitC: #555; //轨道的颜色
+#commander {
+	position: absolute;
+	background: url('star.jpg');
+	left: calc(~"50% - 50px");
+	top: calc(~"50% - 50px");
+	width: @orbitW;
+	height: @orbitH;
+	border-radius: @orbitR;
+}
+/** 轨道通用样式 */
+ .orbit {
+    position: absolute;
+    border-radius: @orbitR;
+    border: 2px  @orbitC solid;
+} 
+ .orbitPosition(@w,@h,@l,@t) {
+      left: calc(~"50% - @{l}");
+      top: calc(~"50% - @{t}");
+      width: @w;
+      height: @h;
+ }
+#orbit0 {
+	.orbitPosition(@orbitW+100, @orbitH+100,100px, 100px);
+	
+}
+#orbit1 {
+	.orbitPosition(@orbitW+200, @orbitH+200,150px, 150px);
+	  
+}
+#orbit2 {
+	.orbitPosition(@orbitW+300, @orbitH+300,200px, 200px);
+	  
+}
+#orbit3 {
+	.orbitPosition(@orbitW+400, @orbitH+400,250px, 250px);
+	  
+}
+.other {
+	position: absolute;   
+    width: @orbitW - 40;
+	height: @orbitH - 60;
+	border-radius: @orbitR;
+}
+.otherPostion(@w,@h,@l,@t,@bgcolor,@boxcolor) {
+	width: @w;
+	height: @h;
+	left: @l;
+	top: @t;
+	background-color: @bgcolor;
+	box-shadow: 10px 10px 2px @boxcolor;
+	
+
+}
+#other1 {
+  .otherPostion(60px,60px,90%,68%,rgba(255, 165, 1, .95),rgb(107, 60, 12));
+
+}
+#other2 {
+	.otherPostion(30px,30px,5%,85%,rgba(255, 107, 1, 0.95),rgba(189, 110, 52, 0.95));
+}
+#other3 {
+	.otherPostion(40px,40px,7%,5%,rgba(1, 138, 255, 0.95),#236dca);
+}
+//飞船的通用样式
+.orbit-ship(@t,@origin) {
+    top:calc(~"50% - @{t}");
+    transform-origin:center @origin;
+}
+.orbit-ship0 {
+  .orbit-ship(105px,110px);
+}
+.orbit-ship1 {
+  .orbit-ship(155px,160px);
+}
+.orbit-ship2 {
+  .orbit-ship(205px,210px);
+}
+.orbit-ship3 {
+  .orbit-ship(255px,260px);
+}
+/*飞船整体*/
+.space-ship {
+	background-color: greenyellow;
+	width: 80px;
+	height: 25px;
+	border:1px solid #000;
+    border-radius: 10px;
+    overflow: hidden;
+    line-height: 25px;
+    text-align: center;
+    position: absolute;
+    left: calc(~"50% - 40px");     
+    transform: rotate(0deg);
+}
+/** 飞船能量条 */
+.energy {
+    width: 100%;
+    height: 100%;
+    background-color: green;
+}
+
+.emptyEnergy {
+    background-color: red;
+}
+/* 控制台整体*/
+#console {
+	background-color: rgba(150, 150, 150, 0.3);
+    width: 100%;
+    border:2px solid #ddd;
+    margin-top: 10px; 
+}
+/** 控制台标题和操作面板标题 */
+#console-title, #control-title {
+    color: @fcolor;
+    background-color: #00dcff;   
+    text-align: center;
+    padding: 5px;
+    
+}
+/** 控制台文本区 */
+#console-text {
+    color: @fcolor;
+    overflow: auto;
+    height: 300px;           
+}
+/** 操作面板整体 */
+#control {
+    background-color: rgba(150, 150, 150, 0.3);
+    width: 100%;
+    height: 200px;
+    
+}
+
+/** 操作面板操作区 */
+#control-main {
+    overflow: auto;
+    color: @fcolor ;
+    padding: 10px 5px;
+    width: 100%;
+}
+
+@media screen and (max-width: 800px) {
+#left {
+     width: 100%;   
+     border:2px solid @fcolor;
+
+}
+
+#planet {
+    width: 100%;
+    margin-left: 0;
+    position: relative;    
+    height: 600px; 
+  
+}
+}

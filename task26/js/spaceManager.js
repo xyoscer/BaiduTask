@@ -1,15 +1,12 @@
 /**
- * 宇宙管理员（上帝)
+ * 宇宙管理员
  */
 var spaceManager = {
-    // 宇宙管理员（上帝）的记事本
+    // 宇宙管理员的记事本
     notebook: {
         //飞船列表
         spaceShipList: [],
-        //飞船飞行管理ID
-        spaceShipFlyManager: 0,
-        //太阳能管理ID
-        solarManager: 0
+       
     },
     /**
      * 创建宇宙飞船
