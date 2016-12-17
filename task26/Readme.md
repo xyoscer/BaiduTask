@@ -49,11 +49,17 @@
    （3）console.log()的学习
    
            基础输出     console.log('123');
+           
            格式化输出   console.log('%d + %d = %d', 1, 1, 2);  跟c语言的print打印那个类似
+           
            %s 表示输出字符串
+           
            %f 浮点树
+           
            %o 表示对象   console.log("%o",document.body);
+           
            %O 表示对象   console.log("%O",document.body);
+           
            %c css样式   console.log("%c前端学习",'color:red;font-size:26px');
    
    （4）字符串转换为整数的学习
