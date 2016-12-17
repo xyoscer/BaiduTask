@@ -12,6 +12,7 @@ var commander = {
         //记录中该轨道已经有飞船了
         if(this.notebook.orbitStatus[orbitId]) {
             log("[指挥官]:"+"轨道" + (orbitId + 1) + "上已经存在飞船！", "blue");
+
             return;
         }
         this.notebook.orbitStatus[orbitId] = true;
