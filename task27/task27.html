@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">   
+    <title>行星与飞船</title>
+    <link rel="stylesheet" href="less/task27.css" />
+</head>
+<body>
+<div id="descript"><h3>模拟虚拟宇宙</h3><a href="https://github.com/xyoscer/BaiduTask/tree/master/task26" >任务总结</a></div>
+<!-- 操作面板 -->
+<div id="left">
+<div id="control">
+    <div id="control-title">Control 操作面板</div>
+    <div id="control-main">
+    <div id="changeModel">
+         <label for=""><strong>动力系统选择</strong></label>
+         <input type="radio" name="power" title="速率30px/s,能耗5%/s" checked  value="30,5">前进号
+        <input type="radio" name="power" title="速率50px/s,能耗7%/s"value="50,7">奔腾号
+        <input type="radio" name="power" title="速率80px/s,能耗9%/s" value="80,9">超越号<br>
+        
+        <label for=""><strong>能源系统选择</strong></label>
+        <input type="radio" name="energy" title="补充能源速率2%/s" checked  value="2">劲量型
+        <input type="radio" name="energy" title="补充能源速率3%/s" value="3">光能型
+        <input type="radio" name="energy" title="补充能源速率4%/s"value="4">永久型
+        </div>
+        <div data-id="0">
+            <span>第一轨道</span> 
+            <button  data-type="create" class="btn">创建飞船</button>
+            <button  data-type="drive" disabled="disabled"  class="btn">飞行</button>
+            <button  data-type="stop" disabled="disabled"  class="btn">停止</button>
+            <button  data-type="destory" disabled="disabled" class="btn">销毁飞船</button>           
+         
+        </div>
+        <div data-id="1">
+            <span>第二轨道</span>
+             <button  data-type="create" class="btn">创建飞船</button>
+            <button  data-type="drive" disabled="disabled"  class="btn">飞行</button>
+            <button  data-type="stop" disabled="disabled"  class="btn">停止</button>
+            <button  data-type="destory" disabled="disabled" class="btn">销毁飞船</button>
+          
+        </div>
+        <div data-id="2">
+            <span>第三轨道</span>
+             <button  data-type="create" class="btn">创建飞船</button>
+            <button  data-type="drive" disabled="disabled"  class="btn">飞行</button>
+            <button  data-type="stop" disabled="disabled"  class="btn">停止</button>
+            <button  data-type="destory" disabled="disabled" class="btn">销毁飞船</button>
+          
+        </div>
+        <div data-id="3">
+            <span>第四轨道</span>
+             <button  data-type="create" class="btn">创建飞船</button>
+            <button  data-type="drive" disabled="disabled"  class="btn">飞行</button>
+            <button  data-type="stop" disabled="disabled"  class="btn">停止</button>
+            <button  data-type="destory" disabled="disabled" class="btn">销毁飞船</button>
+         
+        </div>
+    </div>
+</div>
+<!-- 控制台 -->
+<div id="console">
+  <div id="console-title">Console 控制台</div>
+  <div id="console-text"></div>
+</div>
+</div>
+<div id="planet">
+<!-- 指挥官所在的蓝色星球 -->
+<div id="commander"></div> 
+<!-- 其他星球 -->
+<div class="other" id="other1"></div>
+<div class="other" id="other2"></div>
+<div class="other" id="other3"></div>
+<!-- 四条轨道 -->
+
+
+<div id="orbit0" class="orbit"></div>
+<div id="orbit1" class="orbit"></div>
+<div id="orbit2" class="orbit"></div>
+<div id="orbit3" class="orbit"></div>
+
+</div>
+
+<script src="js/Mediator.js"></script> 
+ <script src="js/commander.js"></script>
+ <script src="js/main.js"></script> 
+<script src="js/createShip.js"></script>
+
+
+</body>
+</html>

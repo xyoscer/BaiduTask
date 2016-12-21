@@ -56,10 +56,12 @@ body {
   outline: 0;
   box-shadow: inset 0 1px 1px #fff, 0 0 8px ##50e3c2;
 }
+span {
+  margin-left: 15px;
+}
 .btn {
   display: inline-block;
-  height: 33px;
-  padding: 6px;
+  padding: 10px 20px;
   font-size: 14px;
   line-height: 1.4;
   text-align: center;
@@ -215,14 +217,30 @@ input:disabled {
 #control {
   background-color: rgba(150, 150, 150, 0.3);
   width: 100%;
-  height: 200px;
+  height: 300px;
 }
 /** 操作面板操作区 */
 #control-main {
   overflow: auto;
   color: #ffffff;
-  padding: 10px 5px;
   width: 100%;
+}
+#control-main div {
+  margin-bottom: 10px;
+}
+#changeModel {
+  width: 100%;
+  padding: 10px 30px;
+  font-size: 16px;
+  margin-bottom: 25px;
+  background-color: rgba(1, 255, 244, 0.95);
+}
+#changeModel input[type="radio"] {
+  width: 20px;
+  height: 20px;
+  margin-left: 10px;
+  margin-right: 5px;
+  vertical-align: middle;
 }
 @media screen and (max-width: 800px) {
   #left {
