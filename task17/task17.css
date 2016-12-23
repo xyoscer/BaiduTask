@@ -1,105 +1,129 @@
-/* @font-face {
-    font-family: yaHei;
-    src: url('../1-06/css/font/msyh.ttf');
-} */
 * {
-    font-family: "Microsoft YaHei", yaHei;
+    margin:0;
+}
+html, body {
+    width: 100%;
+}
+#descript {
+    padding:10px;
+    background-color: #50e3c2;
+    color:white;
+}
+#descript > h3 {
+    width: 50%;
+    display: inline-block;
+}
+.tasklink {
+    display: inline-block;
+    text-decoration:none;
+    color:#ddd;
+    text-shadow: 1px 1px 2px #000;
+}
+.tasklink:hover {
+    color:#fff;
+}
+.aqi-chart-wrap {
+    display: flex;
+    position: relative;
+    width: 98%;
+    height: 600px;
+    justify-content: center;
+    align-items: flex-end;
+    align-content: center;
+    margin: 10px auto;
+    box-shadow: 0 0 5px #999999;
+}
+.aqi-chart-wrap div:not(.title) {
+    border: 1px solid #000;
+    flex: 1;
+    margin-left: 2px;
+    margin-right: 2px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    animation: donghua 0.5s ease-in-out;
 }
 fieldset {
-    width: 1100px;
-    margin: 0 auto;
-    border-radius: 15px;
+    border: 1px solid #0B2C65;
+    border-radius: 5px;
+    text-align: center;
 }
-.grade {
-    float: left;
-    margin-left: 100px;
-}
-.select {
-    float: left;
-    margin-left: 100px;
+#city {
+    margin:0 30px;
 }
 #city-select {
-    box-sizing: border-box;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    background-color: #ffffff;
+    display: inline-block;
+    width: 200px;
+    height: 30px;
+    padding:0 2%;
     outline: none;
-    width: 110px;
-    line-height: 25px;
-    margin-top: 10px;
-    padding: 0 30px;
-    font-size: .75rem;
-    letter-spacing: 10px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    letter-spacing: 5px;
+    font-size: 14px;
 }
-#aqi-chart-wrap {
-    position: relative;
-    width: 1100px;
-    height: 600px;
-    margin: 25px auto;
-    box-shadow: 0px 0px 5px #999999;
-    border-radius: 15px;
-    overflow: hidden;
+#city-select:hover {
+    border:2px solid #ddd;
 }
-@keyframes heightAnim {
+@keyframes donghua {
     0% {
-        bottom: -300px;
+        margin-bottom: -500px;
+    }
+    50% {
+        margin-bottom:-100px;
+        opacity: .5;
     }
     100% {
-        bottom: 30px;
+        margin-bottom: 0;
+        opacity: 1;
     }
-
-}
-.aqi-bar {
-    position: absolute;
-    bottom: 0;
-    cursor: pointer;
-    animation: heightAnim .5s ease-in-out;
-}
-label {
-    position: relative;
-    display: inline-block;
-    width: 50px;
-    height: 50px;
-}
-label span {
-    display: block;
-    text-align: center;
-    line-height: 50px;
-    border: 1px solid #16324a;
-    border-radius: 50%;
-    cursor: pointer;
-}
-label input {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-}
-.selected {
-    background-color: #16324a;
-    color: white;
-}
-.aqi-hint {
-    position: absolute;
-    display: none;
-    width: 120px;
-    border: 1px solid #16324a;
-    background-color: white;
-    z-index: 999;
-    font-size: .75rem;
-    line-height: 20px;
-    text-align: center;
-    border-radius: 5px;
-    box-shadow: 0px 0px 5px #dddddd;
-    opacity: .8;
-}
-.show + div {
-    display: block;
 }
 .title {
     position: absolute;
     text-align: center;
     width: 100%;
     top: 10px;
+    font-size: 16px;
+    color:red;
+}
+label {
+    width: 100px;
+    text-align: center;
+    display: inline-block;
+    vertical-align: top;
+}
+.radio {
+    position: absolute;
+    display: none;
+}
+.radio + label {
+    position: relative;
+    cursor: pointer;
+}
+.radio + label::before {
+    position: absolute;
+    top:2px;
+    left: 0;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    content:'';
+    border-radius: 50%;
+    border:1px solid #c0c0c0;
+}
+.radio + label::after {
+    position: absolute;
+    display: none;
+    content:'';
+    top: 9px;
+    left: 7px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #3e97eb;
+}
+.radio:checked + label::after {
+    display: block;
+}
+.radio:checked + label::before {
+    border:1px solid #3e97eb;
 }

@@ -16,7 +16,8 @@ var Mediator =  {
                 	if(message.command == "create") {
                 		Mediator.createnewShip(message);
                 	}else { //向宇宙中的飞船广播消息指令
-                       Mediator.notebook.spaceShipList.forEach(ele => ele.receiveMessage(message));
+                        var transformMsg = Mediator.Adapter.encoder(message);
+                       Mediator.notebook.spaceShipList.forEach(ele => ele.receiveMessage(transformMsg));
                 	}                	
                 }             
                 
@@ -44,13 +45,42 @@ var Mediator =  {
         energyDiv.appendChild(textDiv);
         //将飞船显示到页面上
        planet.appendChild(spaceshipDiv);  
-	}
-	/*
-	startShip:function(message) {
-		Mediator.notebook.spaceShipList.forEach(function(ele,index,arr) {
-			 ele.receiveMessage(message);
-		})
-	},*/
+	},
+    //将指挥关的json格式转换为二进制格式
+    Adapter: {
+      encoder: function(message) {
+        var msg = "";
+        switch(message.id.toString()) {
+            case '0': 
+              msg += "00";
+              break;
+            case '1':
+               msg += "01";
+               break;
+            case '2':
+               msg += "10";
+               break;
+            case '3':
+                msg += "11";
+                break;
+        }
+        switch(message.command) {
+           
+            case 'start':
+               msg += "00";
+               break;
+            case 'stop':
+               msg += "01";
+               break;
+            case 'destroy':
+               msg += "10";
+               break;
+        }
+        
 
+      return msg;
+      }
+    }
+	
   
 }
