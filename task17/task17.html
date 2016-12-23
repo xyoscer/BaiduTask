@@ -3,119 +3,19 @@
   <head>
     <meta charset="utf-8">
     <title>IFE JavaScript Task 17</title>
-    <style>
-    *{
-      margin:0;
-    }
-    #descript {
-    
-    padding:10px;
-    background-color: #50e3c2;
-    color:white;
- }
- #descript > h3 {
-     width: 50%;
-     display: inline-block;
- }
-.tasklink {
-     display: inline-block;
-     text-decoration:none;
-     color:#ddd;
-     text-shadow: 1px 1px 2px #000;
- }
- .tasklink:hover {
-     color:#fff;
- }
-    .aqi-chart-wrap {
-      display: flex;
-      position: relative;  
-      width: 98%;
-      height: 600px;
-      justify-content: center;
-      align-items: flex-end;
-      align-content: center;
-      margin: 10px auto;    
-      box-shadow: 0 0 5px #999999;
-     
-    }
-
-    .aqi-chart-wrap div:not(.title) {
-      border: 1px solid #000;
-      flex: 1;
-      margin-left: 2px;
-      margin-right: 2px;
-      border-top-left-radius: 5px;
-      border-top-right-radius: 5px;    
-      animation: donghua 0.5s ease-in-out;
-      
-    }
-    fieldset{
-      border: 1px solid #0B2C65;
-      border-radius: 5px;
-      text-align: center;
-    }
-    input{
-        display: inline-block;        
-        outline: none;     
-
-    }
-  
-    #city{
-      margin-left: 30px;
-    }
-    #city-select{
-      display: inline-block;       
-       width: 200px;
-       height: 30px; 
-       padding:0 2%;     
-       outline: none;
-       border-top-left-radius: 5px;
-       border-top-right-radius: 5px;
-       letter-spacing: 5px;     
-       font-size: 14px;
-       
-    }
-    #city-select:hover{
-      border:2px solid #ddd;
-    }
-  
-  
-     @keyframes donghua {
-    0% {
-        margin-bottom: -500px;
-       
-    }
-    50%{
-       margin-bottom:-100px;
-       opacity: .5;
-    }
-    100% {
-        margin-bottom: 0;
-        opacity: 1;
-       
-    }
-
-}
-.title {
-    position: absolute;
-    text-align: center;
-    width: 100%;
-    top: 10px;
-    font-size: 16px;
-    color:red;
-   
-}
-
-    </style>
+    <link rel="stylesheet" href="task17.css">
   </head>
 <body>
 <div id="descript"><h3>随机生成数据信息&&用柱状图显示</h3><a href="https://github.com/xyoscer/BaiduTask/tree/master/task17" class="tasklink">任务总结</a></div>
   <fieldset id="form-gra-time">
     <legend>请选择日期粒度及成城市：</legend>   
       <span id="city">请选择日期粒度:</span>
-    <label>日<input name="gra-time" value="day" type="radio" checked="checked"></label>
-    <label>周<input name="gra-time" value="week" type="radio"></label>
-    <label>月<input name="gra-time" value="month" type="radio"></label>    
+    <input name="gra-time" value="day" id="day" type="radio" checked="checked" class="radio">
+    <label for="day">日</label>
+    <input name="gra-time" value="week" id="week" type="radio" class="radio">
+    <label for="week">周</label>
+    <input name="gra-time" value="month" id="month" type="radio" class="radio">
+    <label for="month">月</label>    
     <span id="city">请选择城市:</span>
     <select id="city-select" value="city">
       <option>北京</option>

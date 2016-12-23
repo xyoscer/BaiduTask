@@ -69,20 +69,7 @@ var commander = {
             id: orbitId,
             command: 'destroy'
         });
-    },
-    //设置速度
-    setRate: function(orbitId, rate) {
-        //记录中该轨道没有飞船
-        if(!this.notebook.orbitStatus[orbitId]) {
-            log("[指挥官]:"+"轨道" + (orbitId + 1) + "上不存在飞船！", "blue");
-            return;
-        }
-        log("[指挥官]:"+"向轨道" + (orbitId + 1) + "发送速度设置指令！", "yellow");
-       Mediator.sendMessage({
-            id: orbitId,
-            command: 'rate',
-            value: rate
-        });
     }
+   
     
 };
