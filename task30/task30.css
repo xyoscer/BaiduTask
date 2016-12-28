@@ -3,6 +3,24 @@
 	padding: 0;
 	box-sizing:border-box;
 }
+#descript {
+  padding: 10px;
+  background-color: #50e3c2;
+  color: #ffffff;
+}
+#descript h3 {
+  width: 50%;
+  display: inline-block;
+}
+#descript a {
+  display: inline-block;
+  text-decoration: none;
+  color: #ddd;
+  text-shadow: 1px 1px 2px #000;
+}
+#descript a:hover {
+  color: #ffffff;
+}
 form {
 	width:500px;
 	margin:20px auto;
