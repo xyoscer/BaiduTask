@@ -11,7 +11,7 @@
        	 	var pos = i;
        	 	inputs[pos].onfocus = function() {
        	 		this.nextElementSibling.innerHTML = focusMsg[pos];
-       	 	}
+       	 	};
        	 })();
        	   /**使用这种方法就focusMsg[i] = undefinded
             /* inputs[i].onfocus = function() {           	

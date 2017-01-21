@@ -20,7 +20,8 @@
     }
     else {
     	  select.style.display = "none";
-          outschool.style.display = "block";         
+          outschool.style.display = "block";
+
    }
 };
 	addEvent(changeRadio,"click",change);
