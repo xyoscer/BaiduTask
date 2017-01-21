@@ -3,7 +3,24 @@ html, body {
     padding: 0;
     width: 100%;
 }
-
+#descript {
+  padding: 10px;
+  background-color: #50e3c2;
+  color: #ffffff;
+}
+#descript h3 {
+  width: 50%;
+  display: inline-block;
+}
+#descript a {
+  display: inline-block;
+  text-decoration: none;
+  color: #ddd;
+  text-shadow: 1px 1px 2px #000;
+}
+#descript a:hover {
+  color: #ffffff;
+}
 .form-group {
     margin: 10px auto;
     width: 800px;
@@ -12,6 +29,11 @@ html, body {
 .radio {
     margin-left: 20%;
 }
+ label {
+ 	margin-left: 20%; 
+ 	/* width: 100px; */
+ 	/* display: inline-block; */
+  }
 
 .form-control {
     display: inline-block;
@@ -36,24 +58,65 @@ html, body {
 }
 
 #select1 {
-    width: 30%;
-    margin-left: 10px;
+
+	width: 200px;
+	margin-left: 10px; 
 
 }
 
 #select2 {
-    width: 50%;
-    margin-left: 20px;
+
+	width: 250px;
+	margin-left: 20px;
+
 }
 
 #outschool {
-    width: 100%;
-    display: none;
 
-    margin-top: 40px;
+	width: 500px;
+	display: none;
+	margin-top: 40px;
+
 }
 
 #outschool .form-control {
-    margin-left: 10px;
-    width: 75%;
+
+	margin-left: 10px;
+	width: 400px;
+}
+.radio {
+  position: absolute;
+  display: none;
+}
+.radio + label {
+  position: relative;
+  cursor: pointer;
+}
+.radio + label::before {
+  position: absolute;
+  top:2px;
+  left: -35px;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  content: '';
+  border: 1px solid #c0c0c0;
+  border-radius: 50%;
+}
+.radio + label::after {
+   position: absolute;
+   display: none;
+   content: '';
+}
+.radio:checked + label::after {
+   display: block;
+}
+.radio + label::after {
+  top: 9px;
+  left: -28px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #3e97eb; 
+
 }

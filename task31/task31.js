@@ -10,11 +10,12 @@
 		}
 	}
 	var student = document.getElementById('student'),
+	    noStudent = document.getElementById('noStudent'),
 	    select = document.getElementById('select'),
 	    outschool = document.getElementById('outschool');
 	var changeRadio = document.getElementById('changeRadio');
 	var change = function() {
-	 if (student.checked) {
+	 if(student.checked) {
          select.style.display = "block";
          outschool.style.display = "none";
     }
